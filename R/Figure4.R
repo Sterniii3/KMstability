@@ -66,7 +66,7 @@ Figure4 <- function(data){
                                               "upper limit minus KM estmate",
                                               "KM estimate minus lower limit"))
 
-  plot4 <- ggplot(data = DF4,
+  plot4 <- ggplot2::ggplot(data = DF4,
                   aes(x = time,
                       y = Probability,
                       group = strata)) +

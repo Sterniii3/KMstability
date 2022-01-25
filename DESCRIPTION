@@ -14,7 +14,8 @@ LazyData: true
 RoxygenNote: 7.1.2
 Imports:
 	survminer,
-	survival
+	survival,
+	ggplot2
 Suggests: 
     rmarkdown,
     knitr
