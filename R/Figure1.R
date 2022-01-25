@@ -16,7 +16,7 @@
 Figure1 <- function(data){
 
   # Kaplan-Meier estimator of event free time
-  KM <- survfit(Surv(difftime(final_date, start_date),
+  KM <- survival::survfit(survival::Surv(difftime(final_date, start_date),
                      event) ~ 1,
                 type = "kaplan-meier",
                 conf.type = "log-log",
@@ -25,7 +25,7 @@ Figure1 <- function(data){
   # Figure 1. Kaplan–Meier estimate of survivor function for overall survival, X,
   # with 95% confidence intervals and numbers at risk
   # (compare Figure 1 in Betensky (2015))
-  plot1 <- ggsurvplot(KM,
+  plot1 <- survminer::ggsurvplot(KM,
                       data = data,
                       risk.table = TRUE,
                       conf.int = TRUE,
