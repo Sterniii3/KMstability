@@ -25,7 +25,7 @@ Figure4 <- function(data){
   # difference curve between the upper and lower limits and
   # the area under this curve, normalized by the maximum event time,
   # to range between 0 (complete stability) and 1 (complete instability)
-  DF_norm <- surv_summary(KM, data = DF)
+  DF_norm <- survminer::surv_summary(KM, data = DF)
   # maximum event time
   df <- subset(data, event == 1)
   maximum_event_time <- ceiling(max(difftime(df$final_date,
