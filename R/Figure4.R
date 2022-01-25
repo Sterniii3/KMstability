@@ -67,19 +67,19 @@ Figure4 <- function(data){
                                               "KM estimate minus lower limit"))
 
   plot4 <- ggplot2::ggplot(data = DF4,
-                  aes(x = time,
+                  ggplot2::aes(x = time,
                       y = Probability,
                       group = strata)) +
     # ggtitle("Difference curve between upper and lower limits of Kaplan–Meier and partial difference curves between Kaplan–Meier and upper and lower limits") +
-    geom_line(aes(linetype = strata)) +
-    scale_linetype_manual(name="", values = c("solid",
+    ggplot2::geom_line(ggplot2::aes(linetype = strata)) +
+    ggplot2::scale_linetype_manual(name="", values = c("solid",
                                               "dotted",
                                               "dashed"),
                           labels=c(paste0("upper limit - lower limit;\n normalized auc = ",
                                           round(norm_auc, 2 )),
                                    "upper limit - KM estmate",
                                    "KM estimate - lower limit")) +
-    theme_survminer()
+    survminer::theme_survminer()
 
   return(plot4)
 }
