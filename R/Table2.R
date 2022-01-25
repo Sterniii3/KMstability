@@ -17,7 +17,7 @@ Table2 <- function(data){
 
   FU <- calculate_FU(data)
 
-  KM_FU <- survfit(Surv(time, event) ~ strata,
+  KM_FU <- survival::survfit(survival::Surv(time, event) ~ strata,
                    type = "kaplan-meier",
                    conf.type = "log-log",
                    data = FU)

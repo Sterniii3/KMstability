@@ -17,7 +17,7 @@ Table1 <- function(data){
 
   DF <- calculate_stability(data)
 
-  KM <- survfit(Surv(time, event) ~ strata,
+  KM <- survival::survfit(survival::Surv(time, event) ~ strata,
                 type = "kaplan-meier",
                 conf.type = "log-log",
                 data = DF)

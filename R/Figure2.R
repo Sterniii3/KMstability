@@ -17,14 +17,14 @@ Figure2 <- function(data){
 
   DF <- calculate_stability(data)
 
-  KM <- survfit(Surv(time, event) ~ strata,
+  KM <- survival::survfit(survival::Surv(time, event) ~ strata,
                 type = "kaplan-meier",
                 conf.type = "log-log",
                 data = DF)
 
   # Figure 2. Proposed upper and lower limits for Kaplan–Meier estimate
   # (compare Figre 2 in Betensky (2015))
-  plot2 <- ggsurvplot(KM,
+  plot2 <- survminer::ggsurvplot(KM,
                       data = DF,
                       risk.table = TRUE,
                       #  conf.int = TRUE,

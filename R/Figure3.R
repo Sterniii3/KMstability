@@ -17,13 +17,13 @@ Figure3 <- function(data){
 
   FU <- calculate_FU(data)
 
-  KM_FU <- survfit(Surv(time, event) ~ strata,
+  KM_FU <- survival::survfit(survival::Surv(time, event) ~ strata,
                    type = "kaplan-meier",
                    conf.type = "log-log",
                    data = FU)
 
   # Figure 3
-  plot3 <- ggsurvplot(KM_FU,
+  plot3 <- survminer::ggsurvplot(KM_FU,
                       data = FU,
                       risk.table = TRUE,
                       conf.int = TRUE,
