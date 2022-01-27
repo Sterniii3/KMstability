@@ -1,5 +1,5 @@
 # KMstability
-Easy application of methods for reporting the stability of Kaplan-Meier estimates
+Easy application of methods for reporting the stability of Kaplan-Meier estimates including time to censoring, observation time, observation time for those event-free and the stability interval proposed by Betensky (2015).
 
 Install the package directly from [GitHub](https://github.com/) with:
 
