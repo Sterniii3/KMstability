@@ -21,4 +21,9 @@ Figure4(data)
 Table1(data)
 Table2(data)
 ````
-or access the user-friendly KMstability R Shiny App via [https://web.imbi.uni-heidelberg.de/KMstability/](https://web.imbi.uni-heidelberg.de/KMstability/).
+or access the user-friendly KMstability R Shiny App via: [https://web.imbi.uni-heidelberg.de/KMstability/](https://web.imbi.uni-heidelberg.de/KMstability/).
+
+
+
+Reference:
+Betensky, R. A. (2015). Measures of follow-up in time-to-event studies: Why provide them and what should they be?. Clinical Trials, 12(4), 403-408.
