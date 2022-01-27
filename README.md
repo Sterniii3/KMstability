@@ -6,6 +6,9 @@ Install the package directly from [GitHub](https://github.com/) with:
 ```r
 if(!require(devtools)) { install.packages("devtools"); require(devtools)} 
 devtools::install_github("Sterniii3/KMstability")
+````
+and apply the functions to your data, as for example:
+```r
 library(KMstability)
 
 data <- data.frame(start_date = as.Date(rep(0, 100), origin = "2022-01-01"),
@@ -18,4 +21,4 @@ Figure4(data)
 Table1(data)
 Table2(data)
 ````
-and access the KMstability App via [https://web.imbi.uni-heidelberg.de/KMstability/](https://web.imbi.uni-heidelberg.de/KMstability/).
+or access the user-friendly KMstability R Shiny App via [https://web.imbi.uni-heidelberg.de/KMstability/](https://web.imbi.uni-heidelberg.de/KMstability/).
