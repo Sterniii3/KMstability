@@ -14,6 +14,7 @@ library(KMstability)
 data <- data.frame(start_date = as.Date(rep(0, 100), origin = "2022-01-01"),
                   final_date = as.Date(round(runif(100, 0, 250)), origin = "2022-01-01"),
                   event = rbinom(100, 1, 0.9))
+                  
 Figure1(data) # Kaplan–Meier estimate of survivor function for overall survival, with 95% confidence intervals and numbers at risk.
 Figure2(data) # Upper and lower limits for Kaplan–Meier estimate as proposed by Betensky (2015).
 Figure3(data) # Kaplan–Meier estimates of time to censoring, C, observation time, T, and time to censoring among those who are censored, C|C<X.
