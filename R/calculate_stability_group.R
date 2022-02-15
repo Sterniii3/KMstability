@@ -1,4 +1,4 @@
-#' calculate_stability
+#' calculate_stability_group
 #'
 #' help function to calculate the stability interval for the individual Kaplan Meier estimates in a group comparison
 #'

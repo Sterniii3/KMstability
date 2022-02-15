@@ -1,6 +1,6 @@
 #' Figure1_group
 #'
-#' detailed graphical presentations of the entire distribution via adequate Kaplan-Meier plots including confidence intervals and detailed life tables for several groups
+#' detailed graphical presentations of the entire distribution via adequate Kaplan-Meier plots including confidence intervals and detailed life tables for group comparison
 #'
 #' @param data data.frame containing variables named start_date, final_date, event and group.
 #'
