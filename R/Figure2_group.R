@@ -20,13 +20,13 @@ Figure2_group <- function(data){
 
   DF <- calculate_stability_group(data)
 
-  KM_group <- survfit(Surv(time, event) ~ group + measure,
+  KM_group <- survival::survfit(survival::Surv(time, event) ~ group + measure,
                       type = "kaplan-meier",
                       conf.type = "log-log",
                       data = DF)
 
   # Figure 2. Proposed upper and lower limits for Kaplan–Meier.
-  plot2_group <- ggsurvplot(KM_group,
+  plot2_group <- survminer::ggsurvplot(KM_group,
                             data = DF,
                             risk.table = TRUE,
                             #  conf.int = TRUE,

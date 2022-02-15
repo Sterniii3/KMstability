@@ -32,7 +32,7 @@ Figure3_group <- function(data){
                       conf.int = TRUE,
                       censor = TRUE,
                       palette = c("darkblue", "blue",
-                                  "darkgreen", "green",
+                                  "black", "grey",
                                   "darkred", "red"))
 
   return(plot3_group)
