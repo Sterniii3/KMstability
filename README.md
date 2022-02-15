@@ -19,8 +19,8 @@ Figure1(data) # Kaplan–Meier estimate of survivor function for overall surviva
 Figure2(data) # Upper and lower limits for Kaplan–Meier estimate as proposed by Betensky (2015).
 Figure3(data) # Kaplan–Meier estimates of time to censoring, C, observation time, T, and time to censoring among those who are censored, C|C<X.
 Figure4(data) # Difference curve between upper and lower limits of Kaplan–Meier and partial difference curves between Kaplan–Meier and upper and lower limits.
-Table1(data)  # Quantile summaries of KM estimate and proposed upper and lower bounds with associated 95% confidence intervals (lower CI, upper CI)
-Table2(data)  # Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI)
+Table1(data)  # Quantile summaries of KM estimate and proposed upper and lower bounds with associated 95% confidence intervals (lower CI, upper CI).
+Table2(data)  # Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI).
 ````
 or access the user-friendly KMstability R Shiny App via: [https://web.imbi.uni-heidelberg.de/KMstability/](https://web.imbi.uni-heidelberg.de/KMstability/).
 
@@ -35,12 +35,11 @@ data <- data.frame(start_date = c(as.Date(rep(0, 200), origin = "2022-01-01"),
                    event = c(rbinom(200, 1, 0.9), rbinom(200, 1, 0.9)),
                    group = c(rep(0, 200), rep(1, 200)))
                   
-Figure1_group(data) # Individual Kaplan–Meier estimates of survivor function for overall survival, with 95% confidence intervals and numbers at risk.
-Figure2_group(data) # Individual upper and lower limits for Kaplan–Meier estimates as proposed by Betensky (2015).
-Figure3(data) # Kaplan–Meier estimates of time to censoring, C, observation time, T, and time to censoring among those who are censored, C|C<X.
-Figure4(data) # Difference curve between upper and lower limits of Kaplan–Meier and partial difference curves between Kaplan–Meier and upper and lower limits.
-Table1(data)  # Quantile summaries of KM estimate and proposed upper and lower bounds with associated 95% confidence intervals (lower CI, upper CI)
-Table2(data)  # Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI)
+Figure1_group(data) 
+Figure2_group(data) 
+Figure3_group(data) 
+Table1_group(data)  
+Table2_group(data)  
 ````
 
 Reference:
