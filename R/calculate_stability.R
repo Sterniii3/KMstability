@@ -21,9 +21,11 @@ calculate_stability <- function(data){
   # time (and retaining their status as censored)"
   #-------------------------------------------------------------------------------
   # maximum event time
-  df <- subset(data, event == 1)
-  maximum_event_time <- ceiling(max(difftime(df$final_date,
-                                             df$start_date)))
+  # df <- subset(data, event == 1)
+  # maximum_event_time <- ceiling(max(difftime(df$final_date,
+  #                                            df$start_date)))
+  maximum_event_time <- ceiling(max(difftime(data$final_date,
+                                             data$start_date)))
   # set all times of censored observations to the maximum event time
   data$timeupper <- difftime(data$final_date,
                              data$start_date)
