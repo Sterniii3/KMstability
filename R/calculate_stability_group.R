@@ -50,7 +50,7 @@ calculate_stability_group <- function(data){
   # group = 0
 
   data0$time <- difftime(data0$final_date,
-                         data0$start_date)
+                         data0$start_date, units = "days")
   dfC <- subset(data0, event == 0)
   dfE <- subset(data0, event == 1)
 
@@ -80,7 +80,7 @@ calculate_stability_group <- function(data){
   # group = 1
 
   data1$time <- difftime(data1$final_date,
-                         data1$start_date)
+                         data1$start_date, units = "days")
   dfC <- subset(data1, event == 0)
   dfE <- subset(data1, event == 1)
 
