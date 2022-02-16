@@ -1,5 +1,5 @@
 # KMstability
-Easy application of methods for reporting the stability of Kaplan-Meier estimates including time to censoring, observation time, observation time for those event-free and the stability interval proposed by Betensky (2015).
+Easy application of methods for reporting the stability and precision of Kaplan-Meier estimates, as well as reporting (the median of) commonly used follow-up distributions such as time to censoring, observation time, observation time for those event-free. Access the associated user-friendly KMstability R Shiny App via: [https://web.imbi.uni-heidelberg.de/KMstability/](https://web.imbi.uni-heidelberg.de/KMstability/).
 
 Install the package directly from [GitHub](https://github.com/) with:
 
@@ -22,7 +22,6 @@ Figure4(data) # Difference curve between upper and lower limits of Kaplan–Meie
 Table1(data)  # Quantile summaries of KM estimate and proposed upper and lower bounds with associated 95% confidence intervals (lower CI, upper CI).
 Table2(data)  # Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI).
 ````
-or access the user-friendly KMstability R Shiny App via: [https://web.imbi.uni-heidelberg.de/KMstability/](https://web.imbi.uni-heidelberg.de/KMstability/).
 
 In a two group comparison it may also be useful to calculate the stability interval for the individual Kaplan Meier estimates, which can be done as follows:
 ```r
@@ -43,4 +42,7 @@ Table2_group(data)
 ````
 
 Reference:
+
 Betensky, R. A. (2015). Measures of follow-up in time-to-event studies: Why provide them and what should they be?. Clinical Trials, 12(4), 403-408.
+
+Erdmann, S. (2022). Commentary on Betensky (2015): How to report the stability and precision of Kaplan-Meier estimates as well as measures of follow-up in time-to-event studies: R tool KMstability. Clinical Trials (submitted).
