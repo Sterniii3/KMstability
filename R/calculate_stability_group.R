@@ -33,15 +33,11 @@ calculate_stability_group <- function(data){
   data1 <- subset(data, group == 1)
   # maximum_event_time <- ceiling(max(difftime(df$final_date,
   #                                            df$start_date)))
-  maximum_event_time0 <- ceiling(max(difftime(data0$final_date,
-                                              data0$start_date)))
-  maximum_event_time1 <- ceiling(max(difftime(data1$final_date,
-                                              data1$start_date)))
+  maximum_event_time0 <- ceiling(max(data0$time))
+  maximum_event_time1 <- ceiling(max(data1$time))
   # set all times of censored observations to the maximum event time
-  data0$timeupper <- difftime(data0$final_date,
-                             data0$start_date)
-  data1$timeupper <- difftime(data1$final_date,
-                              data1$start_date)
+  data0$timeupper <- data0$time
+  data1$timeupper <- data1$time
   data0$timeupper[data0$event == 0] <- maximum_event_time0
   data1$timeupper[data1$event == 0] <- maximum_event_time1
 
