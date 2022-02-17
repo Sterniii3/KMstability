@@ -18,6 +18,9 @@
 #' @export
 calculate_FU_group <- function(data){
 
+  data$time <- difftime(data$final_date,
+                         data$start_date)
+
   ################################################################################
   # measures of follow-up as a measure of the stability of the KM estimator      #
   ################################################################################
@@ -25,8 +28,6 @@ calculate_FU_group <- function(data){
   data0 <- subset(data, group == 0)
   data1 <- subset(data, group == 1)
 
-  data0$time <- difftime(data0$final_date,
-                         data0$start_date)
   dfC <- subset(data0, event == 0)
 
   FU0 = data.frame(strata = c(rep("C", dim(data0)[1]), # time to censoring
@@ -40,8 +41,6 @@ calculate_FU_group <- function(data){
                               (dfC$event-1)*(-1)))
   FU0$group <- 0
 
-  data1$time <- difftime(data1$final_date,
-                         data1$start_date)
   dfC <- subset(data1, event == 0)
 
   FU1 = data.frame(strata = c(rep("C", dim(data1)[1]), # time to censoring
