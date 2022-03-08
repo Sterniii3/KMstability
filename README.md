@@ -10,7 +10,7 @@ devtools::install_github("Sterniii3/KMstability")
 and apply the functions to your data to generate Figures 1, 2, 3 and 4 as presented in Betensky (2015) and Tables 1 and 2 presentig derived metrics from it:
 ```r
 library(KMstability)
-
+set.seed(41830619)
 data <- data.frame(start_date = as.Date(rep(0, 100), origin = "2022-01-01"),
                   final_date = as.Date(round(runif(100, 0, 250)), origin = "2022-01-01"),
                   event = rbinom(100, 1, 0.9))
@@ -26,7 +26,7 @@ Table2(data)  # Quantile summaries of C, C|C<X and T=min(X, c) with associated 9
 In a two group comparison it may also be useful to calculate the stability interval for the individual Kaplan Meier estimates, which can be done as follows:
 ```r
 library(KMstability)
-
+set.seed(41830619)
 data <- data.frame(start_date = c(as.Date(rep(0, 200), origin = "2022-01-01"),
                                   as.Date(rep(0, 200), origin = "2022-01-01")),
                    final_date = c(as.Date(round(runif(200, 0, 250)), origin = "2022-01-01"),
