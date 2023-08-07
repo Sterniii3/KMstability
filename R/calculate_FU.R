@@ -16,19 +16,21 @@ calculate_FU <- function(data){
   ################################################################################
   # measures of follow-up as a measure of the stability of the KM estimator      #
   ################################################################################
+
   data$time <- difftime(data$final_date,
                         data$start_date)
+
   dfC <- subset(data, event == 0)
 
   FU = data.frame(strata = c(rep("C", dim(data)[1]), # time to censoring
                              rep("T = min(X, C)", dim(data)[1]), # observation time
-                             rep("C|C<X", dim(dfC)[1])), # time to censoring among those who are censored
+                             rep("C|C<X", dim(dfC)[1])), # observation time among those who are censored
                   time = c(data$time,
                            data$time,
                            dfC$time),
-                  event = c((data$event-1)*(-1),
+                  event = c(1 - data$event,
                             rep(1, dim(data)[1]),
-                            (dfC$event-1)*(-1)))
+                            rep(1, dim(dfC)[1]))
 
   return(FU)
 }
