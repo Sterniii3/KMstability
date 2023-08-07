@@ -60,7 +60,7 @@ calculate_stability <- function(data){
   dfE$timelower <- NA
   dfE$timelower <- as.numeric(dfE$time)
   data <- rbind(dfC, dfE)
-  # code all censored observations as events
+  # code all observations as events
   data$eventlower <- 1
 
   # data.frame containing information

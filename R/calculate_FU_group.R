@@ -32,26 +32,26 @@ calculate_FU_group <- function(data){
 
   FU0 = data.frame(strata = c(rep("C", dim(data0)[1]), # time to censoring
                                rep("T = min(X, C)", dim(data0)[1]), # observation time
-                               rep("C|C<X", dim(dfC)[1])), # time to censoring among those who are censored
+                               rep("C|C<X", dim(dfC)[1])), # observation time among those who are censored
                     time = c(data0$time,
                              data0$time,
                              dfC$time),
-                    event = c((data0$event-1)*(-1),
+                    event = c(1 - data0$event,
                               rep(1, dim(data0)[1]),
-                              (dfC$event-1)*(-1)))
+                              rep(1, dim(dfC)[1]))
   FU0$group <- 0
 
   dfC <- subset(data1, event == 0)
 
   FU1 = data.frame(strata = c(rep("C", dim(data1)[1]), # time to censoring
                                rep("T = min(X, C)", dim(data1)[1]), # observation time
-                               rep("C|C<X", dim(dfC)[1])), # time to censoring among those who are censored
+                               rep("C|C<X", dim(dfC)[1])), # observation time among those who are censored
                     time = c(data1$time,
                              data1$time,
                              dfC$time),
-                    event = c((data1$event-1)*(-1),
+                    event = c(1 - data1$event,
                               rep(1, dim(data1)[1]),
-                              (dfC$event-1)*(-1)))
+                              rep(1, dim(dfC)[1]))
   FU1$group <- 1
 
   FU <- rbind(FU0, FU1)
