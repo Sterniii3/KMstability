@@ -45,4 +45,4 @@ Reference:
 
 Betensky, R. A. (2015). Measures of follow-up in time-to-event studies: Why provide them and what should they be?. Clinical Trials, 12(4), 403-408.
 
-Erdmann, S. (2022). Commentary on Betensky (2015): How to report the stability and precision of Kaplan-Meier estimates as well as measures of follow-up in time-to-event studies: R tool KMstability. Clinical Trials (submitted).
+Erdmann, S. & Betensky, R. A. (2023). How to report the stability and precision of Kaplan-Meier estimates as well as measures of follow-up in time-to-event studies: R tool KMstability. SoftwareX (submitted).
