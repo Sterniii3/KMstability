@@ -1,0 +1,26 @@
+{
+    "id": "57F5217E",
+    "path": "U:/KM_stability/KMstability_package/R/calculate_stability_group.R",
+    "project_path": "R/calculate_stability_group.R",
+    "type": "r_source",
+    "hash": "3690374544",
+    "contents": "",
+    "dirty": false,
+    "created": 1645024236276.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "134,0",
+        "scrollLine": "98"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1645024265,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1645024265343,
+    "read_only": false,
+    "read_only_alternatives": []
+}
