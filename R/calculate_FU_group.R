@@ -38,7 +38,7 @@ calculate_FU_group <- function(data){
                              dfC$time),
                     event = c(1 - data0$event,
                               rep(1, dim(data0)[1]),
-                              rep(1, dim(dfC)[1]))
+                              rep(1, dim(dfC)[1])))
   FU0$group <- 0
 
   dfC <- subset(data1, event == 0)
@@ -51,7 +51,7 @@ calculate_FU_group <- function(data){
                              dfC$time),
                     event = c(1 - data1$event,
                               rep(1, dim(data1)[1]),
-                              rep(1, dim(dfC)[1]))
+                              rep(1, dim(dfC)[1])))
   FU1$group <- 1
 
   FU <- rbind(FU0, FU1)
