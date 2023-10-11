@@ -30,7 +30,7 @@ calculate_FU <- function(data){
                            dfC$time),
                   event = c(1 - data$event,
                             rep(1, dim(data)[1]),
-                            rep(1, dim(dfC)[1]))
+                            rep(1, dim(dfC)[1])))
 
   return(FU)
 }
