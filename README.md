@@ -7,7 +7,7 @@ Install the package directly from [GitHub](https://github.com/) with:
 if(!require(devtools)) { install.packages("devtools"); require(devtools)} 
 devtools::install_github("Sterniii3/KMstability")
 ````
-and apply the functions to your data to generate Figures 1, 2, 3 and 4 as presented in Betensky (2015) and Tables 1 and 2 presentig derived metrics from it:
+and apply the functions to your data to generate Figures 1, 2, 3 and 4 as presented in Betensky (2015) and Tables 1 and 2 presenting derived metrics from it:
 ```r
 library(KMstability)
 set.seed(41830619)
