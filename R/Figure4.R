@@ -73,8 +73,8 @@ Figure4 <- function(data){
     # ggplot2::ggtitle("Difference curve between upper and lower limits of Kaplan–Meier and partial difference curves between Kaplan–Meier and upper and lower limits") +
     ggplot2::geom_line(ggplot2::aes(linetype = strata)) +
     ggplot2::scale_linetype_manual(name="", values = c("solid",
-                                              "dotted",
-                                              "dashed"),
+                                              "dashed",
+                                              "dotted"),
                           labels=c(paste0("upper limit - lower limit;\n normalized auc = ",
                                           round(norm_auc, 2 )),
                                    "upper limit - KM estmate",
