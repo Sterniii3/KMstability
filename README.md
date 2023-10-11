@@ -7,7 +7,7 @@ Install the package directly from [GitHub](https://github.com/) with:
 if(!require(devtools)) { install.packages("devtools"); require(devtools)} 
 devtools::install_github("Sterniii3/KMstability")
 ````
-and apply the functions to your data to generate Figures 1, 2, 3 and 4 as presented in Betensky (2015) and Tables 1 and 2 presentig derived metrics from it:
+and apply the functions to your data to generate Figures 1, 2, 3 and 4 as presented in Betensky (2015) and Tables 1 and 2 presenting derived metrics from it:
 ```r
 library(KMstability)
 set.seed(41830619)
@@ -45,4 +45,4 @@ Reference:
 
 Betensky, R. A. (2015). Measures of follow-up in time-to-event studies: Why provide them and what should they be?. Clinical Trials, 12(4), 403-408.
 
-Erdmann, S. (2022). Commentary on Betensky (2015): How to report the stability and precision of Kaplan-Meier estimates as well as measures of follow-up in time-to-event studies: R tool KMstability. Clinical Trials (submitted).
+Erdmann, S. & Betensky, R. A. (2023). How to report the stability and precision of Kaplan-Meier estimates as well as measures of follow-up in time-to-event studies: R tool KMstability. SoftwareX (submitted).
