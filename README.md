@@ -12,7 +12,7 @@ Install the R package directly from [GitHub](https://github.com/) and load it by
 
 ```r
 if(!require(devtools)) { install.packages("devtools"); require(devtools)} 
-devtools::install_github("Sterniii3/KMstability")
+devtools::install_github(repo = "Sterniii3/KMstability", subdir = "/package") 
 
 library(KMstability)
 ```
