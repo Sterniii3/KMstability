@@ -1,6 +1,7 @@
-#' Figure2
+#' SI_plot
 #'
-#' detailed graphical presentation of the alternative measure proposed by Betensky (2015)
+#' detailed graphical presentation of the alternative measure proposed by Betensky (2015),
+#' the stability interval
 #'
 #' @param data data.frame containing variables named start_date, final_date and event.
 #'
@@ -13,7 +14,7 @@
 #' Figure2(data)
 #'
 #' @export
-Figure2 <- function(data){
+SI_plot <- function(data){
 
   DF <- calculate_stability(data)
 
@@ -22,7 +23,7 @@ Figure2 <- function(data){
                 conf.type = "log-log",
                 data = DF)
 
-  # Figure 2. Proposed upper and lower limits for Kaplan–Meier estimate
+  # SI_plot. Proposed upper and lower limits for Kaplan–Meier estimate
   # (compare Figre 2 in Betensky (2015))
   plot2 <- survminer::ggsurvplot(KM,
                       data = DF,

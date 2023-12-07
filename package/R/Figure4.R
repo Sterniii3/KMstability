@@ -1,4 +1,4 @@
-#' Figure4
+#' DC_plot
 #'
 #' detailed graphical presentations of derived metrics of the alternative measure proposed by Betensky (2015)
 #'
@@ -10,10 +10,10 @@
 #' data <- data.frame(start_date = as.Date(rep(0, 100), origin = "2022-01-01"),
 #' final_date = as.Date(round(runif(100, 0, 250)), origin = "2022-01-01"),
 #' event = rbinom(100, 1, 0.9))
-#' Figure4(data)
+#' DC_plot(data)
 #'
 #' @export
-Figure4 <- function(data){
+DC_plot <- function(data){
 
   DF <- calculate_stability(data)
 
