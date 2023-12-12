@@ -1,4 +1,4 @@
-#' Table1_group
+#' KM_SI_tab_group
 #'
 #' derived metrics of the Kaplan-Meier estimate and alternative measure of the stability of the Kaplan-Meier estimate (Betensky, 2015)
 #'
@@ -13,10 +13,10 @@
 #'                as.Date(round(runif(200, 0, 450)), origin = "2022-01-01")),
 #' event = c(rbinom(200, 1, 0.9), rbinom(200, 1, 0.9)),
 #' group = c(rep(0, 200), rep(1, 200)))
-#' Table1_group(data)
+#' KM_SI_tab_group(data)
 #'
 #' @export
-Table1_group <- function(data){
+KM_SI_tab_group <- function(data){
 
   DF <- calculate_stability_group(data)
 
@@ -28,9 +28,9 @@ Table1_group <- function(data){
   # metrics derived from the upper and lower limits
   #-------------------------------------------------------------------------------
   # quantile summaries of limits:
-  Table_1 <- as.data.frame(quantile(KM, probs = c(0.25, 0.5, 0.75), conf.int = TRUE))
+  KM_SI_tab <- as.data.frame(quantile(KM, probs = c(0.25, 0.5, 0.75), conf.int = TRUE))
 
-  names(Table_1) <- c("0.25quantile",
+  names(KM_SI_tab) <- c("0.25quantile",
                       "median",
                       "0.75quantile",
                       "lower CI 0.25quantile",
@@ -40,5 +40,5 @@ Table1_group <- function(data){
                       "upper CI median",
                       "upper CI 0.75quantile")
 
-  return(Table_1)
+  return(KM_SI_tab)
 }

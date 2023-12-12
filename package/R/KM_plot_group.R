@@ -1,4 +1,4 @@
-#' Figure1_group
+#' KM_plot_group
 #'
 #' detailed graphical presentations of the entire distribution via adequate Kaplan-Meier plots including confidence intervals and detailed life tables for group comparison
 #'
@@ -13,10 +13,10 @@
 #'                as.Date(round(runif(200, 0, 450)), origin = "2022-01-01")),
 #' event = c(rbinom(200, 1, 0.9), rbinom(200, 1, 0.9)),
 #' group = c(rep(0, 200), rep(1, 200)))
-#' Figure1_group(data)
+#' KM_plot_group(data)
 #'
 #' @export
-Figure1_group <- function(data){
+KM_plot_group <- function(data){
 
   # Kaplan-Meier estimator of event free time
   KM <- survival::survfit(survival::Surv(difftime(final_date, start_date),
@@ -28,13 +28,13 @@ Figure1_group <- function(data){
   # Figure 1. Kaplan–Meier estimate of survivor function for overall survival, X,
   # with 95% confidence intervals and numbers at risk
   # (compare Figure 1 in Betensky (2015))
-  plot1_group <- survminer::ggsurvplot(KM,
+  KM_plot_group <- survminer::ggsurvplot(KM,
                       data = data,
                       risk.table = TRUE,
                       conf.int = TRUE,
                       censor = TRUE,
                       title = "")
 
-  return(plot1_group)
+  return(KM_plot_group)
 
 }

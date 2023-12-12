@@ -1,4 +1,4 @@
-#' Figure2_group
+#' SI_plot_group
 #'
 #' detailed graphical presentation of the alternative measure proposed by Betensky (2015) for group comparison
 #'
@@ -13,10 +13,10 @@
 #'                as.Date(round(runif(200, 0, 450)), origin = "2022-01-01")),
 #' event = c(rbinom(200, 1, 0.9), rbinom(200, 1, 0.9)),
 #' group = c(rep(0, 200), rep(1, 200)))
-#' Figure2_group(data)
+#' SI_plot_group(data)
 #'
 #' @export
-Figure2_group <- function(data){
+SI_plot_group <- function(data){
 
   DF <- calculate_stability_group(data)
 
@@ -26,7 +26,7 @@ Figure2_group <- function(data){
                       data = DF)
 
   # Figure 2. Proposed upper and lower limits for Kaplan–Meier.
-  plot2_group <- survminer::ggsurvplot(KM_group,
+  SI_plot_group <- survminer::ggsurvplot(KM_group,
                             data = DF,
                             risk.table = TRUE,
                             #  conf.int = TRUE,
@@ -36,5 +36,5 @@ Figure2_group <- function(data){
                             palette = c("lightblue3", "blue", "lightblue2",
                                         "pink3", "red", "pink2"))
 
-  return(plot2_group)
+  return(SI_plot_group)
 }

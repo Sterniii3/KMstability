@@ -1,4 +1,4 @@
-#' Figure3_group
+#' FU_plot_group
 #'
 #' detailed graphical presentation of common measures of follow-up (i.e. time to censoring, observation time and observation time for those event-free) in a group comparison
 #'
@@ -13,10 +13,10 @@
 #'                as.Date(round(runif(200, 0, 450)), origin = "2022-01-01")),
 #' event = c(rbinom(200, 1, 0.9), rbinom(200, 1, 0.9)),
 #' group = c(rep(0, 200), rep(1, 200)))
-#' Figure3_group(data)
+#' FU_plot_group(data)
 #'
 #' @export
-Figure3_group <- function(data){
+FU_plot_group <- function(data){
 
   FU <- calculate_FU_group(data)
 
@@ -26,7 +26,7 @@ Figure3_group <- function(data){
                    data = FU)
 
   # Figure 3
-  plot3_group <- survminer::ggsurvplot(KM_FU,
+  FU_plot_group <- survminer::ggsurvplot(KM_FU,
                       data = FU,
                       risk.table = TRUE,
                       conf.int = TRUE,
@@ -35,6 +35,6 @@ Figure3_group <- function(data){
                                   "black", "grey",
                                   "darkred", "red"))
 
-  return(plot3_group)
+  return(FU_plot_group)
 
 }
