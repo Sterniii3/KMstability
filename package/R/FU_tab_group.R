@@ -1,4 +1,4 @@
-#' Table2_group
+#' FU_tab_group
 #'
 #' derived metrics of common measures of follow-up (i.e. time to censoring, observation time and observation time for those event-free) for group comparison
 #'
@@ -13,10 +13,10 @@
 #'                as.Date(round(runif(200, 0, 450)), origin = "2022-01-01")),
 #' event = c(rbinom(200, 1, 0.9), rbinom(200, 1, 0.9)),
 #' group = c(rep(0, 200), rep(1, 200)))
-#' Table2_group(data)
+#' FU_tab_group(data)
 #'
 #' @export
-Table2_group <- function(data){
+FU_tab_group <- function(data){
 
   FU <- calculate_FU_group(data)
 
@@ -26,9 +26,9 @@ Table2_group <- function(data){
                    data = FU)
 
   # derived summary measures of measures of follow-up as measure of the stability of the KM estimates
-  Table_2 <- as.data.frame(quantile(KM_FU, probs = c(0.25, 0.5, 0.75), conf.int = TRUE))
+  FU_tab <- as.data.frame(quantile(KM_FU, probs = c(0.25, 0.5, 0.75), conf.int = TRUE))
 
-  names(Table_2) <- c("0.25quantile",
+  names(FU_tab) <- c("0.25quantile",
                       "median",
                       "0.75quantile",
                       "lower CI 0.25quantile",
@@ -38,6 +38,6 @@ Table2_group <- function(data){
                       "upper CI median",
                       "upper CI 0.75quantile")
 
-  return(Table_2)
+  return(FU_tab)
 
 }
