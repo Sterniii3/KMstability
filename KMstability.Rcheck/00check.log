@@ -1,0 +1,84 @@
+* using log directory 'P:/meth_ks/KM_stabilty/KMstability_software/KMstability.Rcheck'
+* using R version 4.2.1 (2022-06-23 ucrt)
+* using platform: x86_64-w64-mingw32 (64-bit)
+* using session charset: UTF-8
+* using options '--no-manual --as-cran'
+* checking for file 'KMstability/DESCRIPTION' ... OK
+* checking extension type ... Package
+* this is package 'KMstability' version '1.1'
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking serialization versions ... OK
+* checking whether package 'KMstability' can be installed ... OK
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking for future file timestamps ... OK
+* checking DESCRIPTION meta-information ... NOTE
+Lizenzkomponenten, die Templates sind und '+ file LICENCE' benötigen:
+  MIT
+* checking top-level files ... NOTE
+File
+  LICENSE
+is not mentioned in the DESCRIPTION file.
+Non-standard file/directory found at top level:
+  'example_data_set.csv'
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... OK
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... OK
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking loading without being on the library search path ... OK
+* checking dependencies in R code ... OK
+* checking S3 generic/method consistency ... OK
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... NOTE
+DC_plot: no visible binding for global variable 'event'
+DC_plot: no visible global function definition for 'approxfun'
+DC_plot: no visible global function definition for 'integrate'
+DC_plot: no visible binding for global variable 'Probability'
+FU_tab: no visible global function definition for 'quantile'
+KM_SI_tab: no visible global function definition for 'quantile'
+Table1_group: no visible global function definition for 'quantile'
+Table2_group: no visible global function definition for 'quantile'
+calculate_FU: no visible binding for global variable 'event'
+calculate_FU_group: no visible binding for global variable 'group'
+calculate_FU_group: no visible binding for global variable 'event'
+calculate_stability: no visible binding for global variable 'event'
+calculate_stability_group: no visible binding for global variable
+  'group'
+calculate_stability_group: no visible binding for global variable
+  'event'
+Undefined global functions or variables:
+  Probability approxfun event group integrate quantile
+Consider adding
+  importFrom("stats", "approxfun", "integrate", "quantile")
+to your NAMESPACE file.
+* checking for missing documentation entries ... WARNING
+Undokumentierte Code-Objekte:
+  'DC_plot' 'FU_plot' 'FU_tab' 'Figure1_group' 'Figure2_group'
+  'Figure3_group' 'KM_SI_tab' 'KM_plot' 'SI_plot' 'Table1_group'
+  'Table2_group' 'calculate_FU' 'calculate_FU_group'
+  'calculate_stability' 'calculate_stability_group'
+All user-level objects in a package should have documentation entries.
+See chapter 'Writing R documentation files' in the 'Writing R
+Extensions' manual.
+* checking examples ... NONE
+* checking for unstated dependencies in 'tests' ... OK
+* checking tests ... OK
+  Running 'testthat.R'
+* checking for non-standard things in the check directory ... OK
+* checking for detritus in the temp directory ... OK
+* DONE
+Status: 1 WARNING, 3 NOTEs

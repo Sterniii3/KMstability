@@ -1,4 +1,4 @@
-Version 1.0
+Version 1.1
 
 The associated R package of this R Shiny application can be accessed via: https://github.com/Sterniii3/KMstability
 

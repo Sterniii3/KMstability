@@ -10,11 +10,11 @@ by browsing your directory.
 
 2. Select if you use option 1 or option 2.
 
-3. Specify the name of the start and the stop date variable or the time interval variable, as well as the event variable in you data set, respectively. 
+3. Specify the name of the start and the stop date variable or the time interval variable, as well as the event variable in your data set, respectively. 
 
-4. Choose which figure format (png, jpeg or pdf) you whish.
+4. Choose which figure format (png, jpeg or pdf) you wish.
 
-5. Click on "Go" and wait for the results to apear in the "plots" and "derived metrics" tab, respectively.
+5. Click on "Go" and wait for the results to appear in the "plots" and "derived metrics" tab, respectively.
 
 ### output
 

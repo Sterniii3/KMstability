@@ -7,14 +7,14 @@ library(survminer)
 library(survival)
 
 server <- function(input, output){
-  
-  options(shiny.maxRequestSize=10*1024^2) 
-  
+
+  options(shiny.maxRequestSize=10*1024^2)
+
   data_input <- reactive({
     req(input$csv_input)
     fread(input$csv_input$datapath)
   })
-  
+
   observeEvent(data_input(),{
     choices <- c("Not Selected", names(data_input()))
     updateSelectInput(inputId = "num_var_1", choices = choices)
@@ -22,42 +22,42 @@ server <- function(input, output){
     updateSelectInput(inputId = "num_var_3", choices = choices)
     updateSelectInput(inputId = "fact_var", choices = choices)
   })
-  
+
   num_var_1 <- eventReactive(input$run_button, input$num_var_1)
   num_var_2 <- eventReactive(input$run_button, input$num_var_2)
   num_var_3 <- eventReactive(input$run_button, input$num_var_3)
   fact_var <- eventReactive(input$run_button, input$fact_var)
 
   results <- eventReactive(input$run_button,{
-    
+
     data <- data_input()
-    
+
     if(input$option == "start and stop date"){
 
        names(data)[which(names(data) == num_var_1())] <- "start_date"
        names(data)[which(names(data) == num_var_2())] <- "final_date"
        names(data)[which(names(data) == fact_var())] <- "event"
-       
+
        data$start_date <- as.Date(data$start_date, tryFormats = c("%d.%m.%Y"))
        data$final_date <- as.Date(data$final_date, tryFormats = c("%d.%m.%Y"))
 
        data$dt <- difftime(data$final_date, data$start_date)
     }
-    
+
     if(input$option == "time interval"){
-      
+
       names(data)[which(names(data) == num_var_3())] <- "dt"
       names(data)[which(names(data) == fact_var())] <- "event"
 
     }
-    
+
     # Kaplan-Meier estimator of event free time
     KM <- survival::survfit(survival::Surv(dt,
                                            event) ~ 1,
                             type = "kaplan-meier",
                             conf.type = "log-log",
                             data = data)
-    
+
     # Figure 1. Kaplan–Meier estimate of survivor function for overall survival, X,
     # with 95% confidence intervals and numbers at risk
     # (compare Figure 1 in Betensky (2015))
@@ -68,7 +68,7 @@ server <- function(input, output){
                                    censor = TRUE,
                                    title = "")
 
-    
+
     ################################################################################
     # stability interval = lower and upper limit for KM (Betensky, 2015)           #
     ################################################################################
@@ -157,6 +157,20 @@ server <- function(input, output){
                       "upper CI 0.75quantile")
     row.names(frame) <- c("upper bound", "KM estimate", "lower bound")
 
+    frame_pretty <- cbind(c("upper bound", "KM estimate", "lower bound"),
+                          t(t(paste0(frame$`0.25quantile`, " (",
+                                     frame$`lower CI 0.25quantile`, ",",
+                                     frame$`upper CI 0.25quantile`, ")"))),
+                          t(t(paste0(frame$median, " (",
+                                     frame$`lower CI median`, ",",
+                                     frame$`upper CI median`, ")"))),
+                          t(t(paste0(frame$`0.75quantile`, " (",
+                                     frame$`lower CI 0.75quantile`, ",",
+                                     frame$`upper CI 0.75quantile`, ")"))))
+
+    frame_pretty <- as.data.frame(frame_pretty)
+    names(frame_pretty)<- c("","0.25", "0.5", "0.75")
+
     # difference curve between the upper and lower limits and the area under this curve,
     # normalized by the maximum event time, to range between 0 (complete stability) and 1 (complete instability)
     DF_norm <- surv_summary(KM, data = DF)
@@ -239,6 +253,20 @@ server <- function(input, output){
                       "upper CI 0.75quantile")
     row.names(frame1) <- c("C", "C|C<X", "T = min(X, C)")
 
+    frame1_pretty <- cbind(c("C", "C|C<X", "T = min(X, C)"),
+                           t(t(paste0(frame1$`0.25quantile`, " (",
+                                      frame1$`lower CI 0.25quantile`, ",",
+                                      frame1$`upper CI 0.25quantile`, ")"))),
+                           t(t(paste0(frame1$median, " (",
+                                      frame1$`lower CI median`, ",",
+                                      frame1$`upper CI median`, ")"))),
+                           t(t(paste0(frame1$`0.75quantile`, " (",
+                                      frame1$`lower CI 0.75quantile`, ",",
+                                      frame1$`upper CI 0.75quantile`, ")"))))
+
+    frame1_pretty <- as.data.frame(frame1_pretty)
+    names(frame1_pretty)<- c("","0.25", "0.5", "0.75")
+
     # Figure 3
     plot3 <- ggsurvplot(KM_FU,
                data = FU,
@@ -246,13 +274,13 @@ server <- function(input, output){
                conf.int = TRUE,
                censor = TRUE)
 
-    list(plot1, plot2, plot3, plot4, frame, frame1)
-    
+    list(plot1, plot2, plot3, plot4, frame, frame1, frame_pretty, frame1_pretty)
+
   })
-  
+
    # output$tab_1 <- renderTable(results()[[1]],
    #                                               rownames = TRUE)
-  
+
   output$plot_1 <- renderPlot(results()[[1]])
 
   output$save1 <- downloadHandler(
@@ -273,7 +301,7 @@ server <- function(input, output){
       dev.off()
     }
   )
-  
+
   output$plot_2 <- renderPlot(results()[[2]])
 
   output$save2 <- downloadHandler(
@@ -340,20 +368,26 @@ server <- function(input, output){
 
   # 1-d summary tables
 
-  output$num_var_1_title <- renderText("Table 1: Quantile summaries of KM estimate and proposed upper and lower bounds with associated 95% confidence intervals (lower CI, upper CI)")
-  output$num_var_2_title <- renderText("Table 2: Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI)")
+  output$num_var_1_title <- renderText("Table 1a: Quantile summaries of KM estimate and proposed upper and lower bounds with associated 95% confidence intervals (lower CI, upper CI)")
+  output$num_var_2_title <- renderText("Table 2a: Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI)")
+
+  output$num_var_5_title <- renderText("Pretty tables")
+
+
+  output$num_var_3_title <- renderText("Table 1b: Quantile summaries of KM estimate and proposed upper and lower bounds with associated 95% confidence intervals (lower CI, upper CI)")
+  output$num_var_4_title <- renderText("Table 2b: Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI)")
+
 
   output$titlefig1 <- renderText("Figure 1: Kaplan–Meier estimate of survivor function for overall survival, with 95% confidence intervals and numbers at risk.")
   output$titlefig2 <- renderText("Figure 2: Upper and lower limits for Kaplan–Meier estimate as proposed by Betensky (2015).")
   output$titlefig3 <- renderText("Figure 3: Kaplan–Meier estimates of time to censoring, C, observation time, T, and time to censoring among those who are censored, C|C<X.")
   output$titlefig4 <- renderText("Figure 4: Difference curve between upper and lower limits of Kaplan–Meier and partial difference curves between Kaplan–Meier and upper and lower limits.")
 
-
   output$num_var_1_summary_table <- renderTable(results()[[5]],
                                                 rownames = TRUE)
   output$save5 <- downloadHandler(
     filename = function() {
-      'Table1.csv'
+      'Table1a.csv'
     },
     content = function(file) {
       write.csv(results()[[5]], file)
@@ -364,12 +398,35 @@ server <- function(input, output){
                                                 rownames = TRUE)
   output$save6 <- downloadHandler(
     filename = function() {
-      'Table2.csv'
+      'Table2a.csv'
     },
     content = function(file) {
       write.csv(results()[[6]], file)
     }
   )
-  
+
+
+  output$num_var_3_summary_table <- renderTable(results()[[7]],
+                                                rownames = TRUE)
+  output$save7 <- downloadHandler(
+    filename = function() {
+      'Table1b.csv'
+    },
+    content = function(file) {
+      write.csv(results()[[7]], file)
+    }
+  )
+
+  output$num_var_4_summary_table <- renderTable(results()[[8]],
+                                                rownames = TRUE)
+  output$save8 <- downloadHandler(
+    filename = function() {
+      'Table2b.csv'
+    },
+    content = function(file) {
+      write.csv(results()[[8]], file)
+    }
+  )
+
 }
 

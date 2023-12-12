@@ -8,29 +8,29 @@ ui <- navbarPage(
       sidebarPanel(
         title = "Inputs",
         fileInput("csv_input", "1. Select csv file for import", accept = ".csv"),
-        
+
         selectInput(
-          inputId = "option", 
+          inputId = "option",
           label = "2. choose input option",
           choices = c("start and stop date",
                       "time interval",
                       ""),
           selected = ""),
-        
+
         h5(strong('3. specify names of variables')),
-       
+
         conditionalPanel(
           condition = "input.option == 'start and stop date'",
-         
+
           selectInput("num_var_1", "start date", choices = c("start_date")),
           selectInput("num_var_2", "stop date", choices = c("stop_date"))
           ),
-          
+
         conditionalPanel(
           condition = "input.option == 'time interval'",
           selectInput("num_var_3", "time interval", choices = c("time"))
         ),
-        
+
 
         selectInput("fact_var", "event", choices = c("event")),
         radioButtons("Download Option", "4. choose the format", list("png","jpeg","pdf")),
@@ -72,7 +72,7 @@ ui <- navbarPage(
             fluidRow(
               column(width = 10, tableOutput("num_var_1_summary_table")),
             ),
-            downloadButton("save5", "save Table 1"),
+            downloadButton("save5", "save Table 1a"),
             br(),
             br(),
             fluidRow(strong(textOutput("num_var_2_title"))
@@ -80,14 +80,32 @@ ui <- navbarPage(
             fluidRow(
               column(width = 10, tableOutput("num_var_2_summary_table")),
             ),
-            downloadButton("save6", "save Table 2")
-
+            downloadButton("save6", "save Table 2a"),
+            br(),
+            br(),
+            fluidRow(strong(textOutput("num_var_5_title"))
+            ),
+            br(),
+            fluidRow(strong(textOutput("num_var_3_title"))
+            ),
+            fluidRow(
+              column(width = 10, tableOutput("num_var_3_summary_table")),
+            ),
+            downloadButton("save7", "save Table 1b"),
+            br(),
+            br(),
+            fluidRow(strong(textOutput("num_var_4_title"))
+            ),
+            fluidRow(
+              column(width = 10, tableOutput("num_var_4_summary_table")),
+            ),
+            downloadButton("save8", "save Table 2b")
           ),
-          
+
           tabPanel(
             title = "How to use the app",
             includeMarkdown("usage.md")),
-          
+
           tabPanel(
             title = "Why use the app",
             includeMarkdown("why.md"))
@@ -100,7 +118,7 @@ ui <- navbarPage(
  #   titlePanel("About"),
  includeMarkdown("help.md"),
  a(href="https://www.klinikum.uni-heidelberg.de/medizinische-biometrie/wir-ueber-uns/wir-ueber-uns",img(src="Logo-IMBI_ENGL_neu.jpg", height=120))
- 
- 
+
+
   )
 )
