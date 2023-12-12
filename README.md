@@ -2,11 +2,11 @@
 
 Easy application of methods for reporting the stability and precision of Kaplan-Meier estimates, as well as reporting (the median of) commonly used follow-up distributions such as time to censoring, observation time, observation time for       those event-free. 
 
-## 1. Shiny application
+## 1. application
 
 Access the user-friendly KMstability R shiny application via: [https://web.imbi.uni-heidelberg.de/KMstability/](https://web.imbi.uni-heidelberg.de/KMstability/).
    
-## 2. Package
+## 2. package
 
 Install the R package directly from [GitHub](https://github.com/) and load it by executing in the R console:
 
