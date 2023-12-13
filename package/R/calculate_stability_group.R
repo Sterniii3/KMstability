@@ -104,8 +104,8 @@ calculate_stability_group <- function(data){
 
   # data.frame containing information
   DF = data.frame(measure = c(rep("KM estimate", dim(data)[1]),
-                              rep("lower bound", dim(data)[1]),
-                              rep("upper bound", dim(data)[1])),
+                              rep("SI lower bound", dim(data)[1]),
+                              rep("SI upper bound", dim(data)[1])),
                   time = c(data$time,
                            data$timelower,
                            data$timeupper),
@@ -119,9 +119,9 @@ calculate_stability_group <- function(data){
                          rep("limit", dim(data)[1]),
                          rep("limit", dim(data)[1])))
 
-  DF$measure <- factor(DF$measure, levels = c("upper bound",
+  DF$measure <- factor(DF$measure, levels = c("SI upper bound",
                                               "KM estimate",
-                                              "lower bound"))
+                                              "SI lower bound"))
 
   return(DF)
 }
