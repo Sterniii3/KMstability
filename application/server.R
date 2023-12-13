@@ -211,7 +211,7 @@ server <- function(input, output){
 
     plot4 <- ggplot(data = DF4,
                     aes(x = time, y = Probability, group = strata)) +
-     # ggtitle("Difference curve between upper and lower limits of Kaplan–Meier and partial difference curves between Kaplan–Meier and upper and lower limits") +
+     # ggtitle("Difference curve between upper and lower limits of the stability interval and partial difference curves between Kaplan–Meier estimate and SI upper and lower limits") +
       geom_line(aes(linetype = strata)) +
       scale_linetype_manual(name="", values = c("solid", "dashed", "dotted"),
                             labels=c(paste0("SI upper limit - SI lower limit;\n normalized auc = ",
@@ -379,7 +379,7 @@ server <- function(input, output){
 
 
   output$titlefig1 <- renderText("Figure 1: Kaplan–Meier estimate of survivor function for overall survival, with 95% confidence intervals and numbers at risk.")
-  output$titlefig2 <- renderText("Figure 2: stability interval upper and lower limits for Kaplan–Meier estimate as proposed by Betensky (2015).")
+  output$titlefig2 <- renderText("Figure 2: Stability interval upper and lower limits for Kaplan–Meier estimate as proposed by Betensky (2015).")
   output$titlefig3 <- renderText("Figure 3: Kaplan–Meier estimates of time to censoring, C, observation time, T, and time to censoring among those who are censored, C|C<X.")
   output$titlefig4 <- renderText("Figure 4: Difference curve between upper and lower limits of the stability interval and partial difference curves between Kaplan–Meier estimate and SI upper and lower limits, respectively.")
 
