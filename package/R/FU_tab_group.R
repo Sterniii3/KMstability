@@ -26,7 +26,7 @@ FU_tab_group <- function(data){
                    data = FU)
 
   # derived summary measures of measures of follow-up as measure of the stability of the KM estimates
-  FU_tab <- as.data.frame(quantile(KM_FU, probs = c(0.25, 0.5, 0.75), conf.int = TRUE))
+  FU_tab <- as.data.frame(quantile(KM_FU, probs = c(0.75, 0.5, 0.25), conf.int = TRUE))
 
   names(FU_tab) <- c("0.25quantile",
                       "median",

@@ -28,7 +28,7 @@ KM_SI_tab_group <- function(data){
   # metrics derived from the upper and lower limits
   #-------------------------------------------------------------------------------
   # quantile summaries of limits:
-  KM_SI_tab <- as.data.frame(quantile(KM, probs = c(0.25, 0.5, 0.75), conf.int = TRUE))
+  KM_SI_tab <- as.data.frame(quantile(KM, probs = c(0.75, 0.5, 0.25), conf.int = TRUE))
 
   names(KM_SI_tab) <- c("0.25quantile",
                       "median",

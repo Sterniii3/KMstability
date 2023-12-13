@@ -144,7 +144,7 @@ server <- function(input, output){
     # metrics derived from the upper and lower limits
     #-------------------------------------------------------------------------------
     # quantile summaries of limits:
-    frame <- as.data.frame(quantile(KM, probs = c(0.25, 0.5, 0.75), conf.int = TRUE))
+    frame <- as.data.frame(quantile(KM, probs = c(0.75, 0.5, 0.25), conf.int = TRUE))
 
     names(frame) <- c("0.25quantile",
                       "median",
@@ -240,7 +240,7 @@ server <- function(input, output){
                      data = FU)
 
     # derived summary measures of measures of follow-up as measure of the stability of the KM estimates
-    frame1 <- as.data.frame(quantile(KM_FU, probs = c(0.25, 0.5, 0.75), conf.int = TRUE))
+    frame1 <- as.data.frame(quantile(KM_FU, probs = c(0.75, 0.5, 0.25), conf.int = TRUE))
 
     names(frame1) <- c("0.25quantile",
                       "median",
@@ -381,7 +381,7 @@ server <- function(input, output){
   output$titlefig1 <- renderText("Figure 1: Kaplan–Meier estimate of survivor function for overall survival, with 95% confidence intervals and numbers at risk.")
   output$titlefig2 <- renderText("Figure 2: stability interval upper and lower limits for Kaplan–Meier estimate as proposed by Betensky (2015).")
   output$titlefig3 <- renderText("Figure 3: Kaplan–Meier estimates of time to censoring, C, observation time, T, and time to censoring among those who are censored, C|C<X.")
-  output$titlefig4 <- renderText("Figure 4: Difference curve between upper and lower limits of Kaplan–Meier and partial difference curves between Kaplan–Meier and upper and lower limits.")
+  output$titlefig4 <- renderText("Figure 4: Difference curve between upper and lower limits of the stability interval and partial difference curves between Kaplan–Meier estimate and SI upper and lower limits.")
 
   output$num_var_3_summary_table <- renderTable(results()[[5]],
                                                 rownames = TRUE)
