@@ -37,11 +37,11 @@ KM_SI_tab <- function(data, pretty = TRUE){
                       "upper CI median",
                       "upper CI 0.75quantile")
 
-  row.names(KM_SI_tab) <- c("upper bound",
+  row.names(KM_SI_tab) <- c("SI upper bound",
                           "KM estimate",
-                          "lower bound")
+                          "SI lower bound")
 
-  frame_pretty <- cbind(c("upper bound", "KM estimate", "lower bound"),
+  frame_pretty <- cbind(c("SI upper bound", "KM estimate", "SI lower bound"),
                         t(t(paste0(KM_SI_tab$`0.25quantile`, " (",
                                    KM_SI_tab$`lower CI 0.25quantile`, ",",
                                    KM_SI_tab$`upper CI 0.25quantile`, ")"))),

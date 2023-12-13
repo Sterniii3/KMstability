@@ -67,6 +67,10 @@ ui <- navbarPage(
           ),
           tabPanel(
             title = "derived metrics",
+            br(),
+            fluidRow(h3(textOutput("num_var_5_title"))
+            ),
+            br(),
             fluidRow(strong(textOutput("num_var_1_title"))
             ),
             fluidRow(
@@ -83,7 +87,7 @@ ui <- navbarPage(
             downloadButton("save6", "save Table 2a"),
             br(),
             br(),
-            fluidRow(strong(textOutput("num_var_5_title"))
+            fluidRow(h3(textOutput("num_var_6_title"))
             ),
             br(),
             fluidRow(strong(textOutput("num_var_3_title"))

@@ -116,15 +116,15 @@ server <- function(input, output){
     data$eventlower <- 1
 
     DF = data.frame(strata = c(rep("KM estimate", dim(data)[1]),
-                               rep("lower bound", dim(data)[1]),
-                               rep("upper bound", dim(data)[1])),
+                               rep("SI lower bound", dim(data)[1]),
+                               rep("SI upper bound", dim(data)[1])),
                     time = c(data$time,
                              data$timelower,
                              data$timeupper),
                     event = c(data$event,
                               data$eventlower,
                               data$event))
-    DF$strata <- factor(DF$strata, levels = c("upper bound", "KM estimate", "lower bound"))
+    DF$strata <- factor(DF$strata, levels = c("SI upper bound", "KM estimate", "SI lower bound"))
 
 
     KM <- survfit(Surv(time, event) ~ strata,
@@ -155,9 +155,9 @@ server <- function(input, output){
                       "upper CI 0.25quantile",
                       "upper CI median",
                       "upper CI 0.75quantile")
-    row.names(frame) <- c("upper bound", "KM estimate", "lower bound")
+    row.names(frame) <- c("SI upper bound", "KM estimate", "SI lower bound")
 
-    frame_pretty <- cbind(c("upper bound", "KM estimate", "lower bound"),
+    frame_pretty <- cbind(c("SI upper bound", "KM estimate", "SI lower bound"),
                           t(t(paste0(frame$`0.25quantile`, " (",
                                      frame$`lower CI 0.25quantile`, ",",
                                      frame$`upper CI 0.25quantile`, ")"))),
@@ -177,8 +177,8 @@ server <- function(input, output){
     DF_norm <- subset(DF_norm, time <= maximum_event_time)
     keep <- as.numeric(names(which(table(DF_norm$time) == 3)))
     DF_norm <- subset(DF_norm, time %in% keep)
-    time <- subset(DF_norm, strata == "upper bound")$time
-    diff_upper_lower <- subset(DF_norm, strata == "upper bound")$surv - subset(DF_norm, strata == "lower bound")$surv
+    time <- subset(DF_norm, strata == "SI upper bound")$time
+    diff_upper_lower <- subset(DF_norm, strata == "SI upper bound")$surv - subset(DF_norm, strata == "SI lower bound")$surv
     f <- approxfun(time, diff_upper_lower, method = "constant")
     auc <- integrate(f,
                      lower = min(time),
@@ -191,33 +191,33 @@ server <- function(input, output){
 
     # partial difference curves to indicate directional instability:
     # the difference between the upper limit and the Kaplan–Meier estimate and
-    diff_upper_KM <- subset(DF_norm, strata == "upper bound")$surv - subset(DF_norm, strata == "KM estimate")$surv
+    diff_upper_KM <- subset(DF_norm, strata == "SI upper bound")$surv - subset(DF_norm, strata == "KM estimate")$surv
 
     # the difference between the Kaplan–Meier estimate and the lower limit.
-    diff_KM_lower <- subset(DF_norm, strata == "KM estimate")$surv - subset(DF_norm, strata == "lower bound")$surv
+    diff_KM_lower <- subset(DF_norm, strata == "KM estimate")$surv - subset(DF_norm, strata == "SI lower bound")$surv
 
     # Figure 4. Difference curve between upper and lower limits of Kaplan–Meier
     # and partial difference curves between Kaplan–Meier and upper and lower limits.
     DF4 <- data.frame(time = c(time, time, time),
-                      strata = c(rep("upper limit minus lower limit", length(time)),
-                                 rep("upper limit minus KM estmate", length(time)),
-                                 rep("KM estimate minus lower limit", length(time))),
+                      strata = c(rep("SI upper limit minus SI lower limit", length(time)),
+                                 rep("SI upper limit minus KM estmate", length(time)),
+                                 rep("KM estimate minus SI lower limit", length(time))),
                       Probability = c(diff_upper_lower,
                                       diff_upper_KM,
                                       diff_KM_lower))
-    DF4$strata <- factor(DF4$strata, levels = c("upper limit minus lower limit",
-                                                "upper limit minus KM estmate",
-                                                "KM estimate minus lower limit"))
+    DF4$strata <- factor(DF4$strata, levels = c("SI upper limit minus SI lower limit",
+                                                "SI upper limit minus KM estmate",
+                                                "KM estimate minus SI lower limit"))
 
     plot4 <- ggplot(data = DF4,
                     aes(x = time, y = Probability, group = strata)) +
      # ggtitle("Difference curve between upper and lower limits of Kaplan–Meier and partial difference curves between Kaplan–Meier and upper and lower limits") +
       geom_line(aes(linetype = strata)) +
       scale_linetype_manual(name="", values = c("solid", "dashed", "dotted"),
-                            labels=c(paste0("upper limit - lower limit;\n normalized auc = ",
+                            labels=c(paste0("SI upper limit - SI lower limit;\n normalized auc = ",
                                             round(norm_auc, 2 )),
-                                     "upper limit - KM estmate",
-                                     "KM estimate - lower limit")) +
+                                     "SI upper limit - KM estmate",
+                                     "KM estimate - SI lower limit")) +
       theme_survminer()
 
     ################################################################################
@@ -292,7 +292,7 @@ server <- function(input, output){
       if (input$`Download Option`== "png"){
         png(file)
       } else if (input$`Download Option`== "pdf"){
-        pdf(file)
+        pdf(file, onefile=F)
       } else {
         jpeg(file)
       }
@@ -313,7 +313,7 @@ server <- function(input, output){
       if (input$`Download Option`== "png"){
         png(file)
       } else if (input$`Download Option`== "pdf"){
-        pdf(file)
+        pdf(file, onefile=F)
       } else {
         jpeg(file)
       }
@@ -334,7 +334,7 @@ server <- function(input, output){
       if (input$`Download Option`== "png"){
         png(file)
       } else if (input$`Download Option`== "pdf"){
-        pdf(file)
+        pdf(file, onefile=F)
       } else {
         jpeg(file)
       }
@@ -354,32 +354,32 @@ server <- function(input, output){
       # open the format of file which needs to be downloaded ex: pdf, png etc.
       if (input$`Download Option`== "png"){
         png(file)
-        print(results()[[4]])
       } else if (input$`Download Option`== "pdf"){
-        pdf(file)
-        results()[[4]]
+        pdf(file, onefile=F)
       } else {
         jpeg(file)
-        print(results()[[4]])
       }
+      print(results()[[4]])
+
       dev.off()
     }
   )
 
   # 1-d summary tables
-
-  output$num_var_1_title <- renderText("Table 1a: Quantile summaries of KM estimate and proposed upper and lower bounds with associated 95% confidence intervals (lower CI, upper CI)")
-  output$num_var_2_title <- renderText("Table 2a: Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI)")
-
   output$num_var_5_title <- renderText("Pretty tables")
 
 
-  output$num_var_3_title <- renderText("Table 1b: Quantile summaries of KM estimate and proposed upper and lower bounds with associated 95% confidence intervals (lower CI, upper CI)")
-  output$num_var_4_title <- renderText("Table 2b: Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI)")
+  output$num_var_3_title <- renderText("Table 1a: Quantile summaries of KM estimate and proposed SI upper and lower bounds with associated 95% confidence intervals (lower CI, upper CI)")
+  output$num_var_4_title <- renderText("Table 2a: Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI)")
+
+  output$num_var_6_title <- renderText("Tables for secondary analysis")
+
+  output$num_var_1_title <- renderText("Table 1b: Quantile summaries of KM estimate and proposed SIupper and lower bounds with associated 95% confidence intervals (lower CI, upper CI)")
+  output$num_var_2_title <- renderText("Table 2b: Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI)")
 
 
   output$titlefig1 <- renderText("Figure 1: Kaplan–Meier estimate of survivor function for overall survival, with 95% confidence intervals and numbers at risk.")
-  output$titlefig2 <- renderText("Figure 2: Upper and lower limits for Kaplan–Meier estimate as proposed by Betensky (2015).")
+  output$titlefig2 <- renderText("Figure 2: stability interval upper and lower limits for Kaplan–Meier estimate as proposed by Betensky (2015).")
   output$titlefig3 <- renderText("Figure 3: Kaplan–Meier estimates of time to censoring, C, observation time, T, and time to censoring among those who are censored, C|C<X.")
   output$titlefig4 <- renderText("Figure 4: Difference curve between upper and lower limits of Kaplan–Meier and partial difference curves between Kaplan–Meier and upper and lower limits.")
 
