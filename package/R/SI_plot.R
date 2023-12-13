@@ -1,7 +1,6 @@
 #' SI_plot
 #'
-#' detailed graphical presentation of the alternative measure proposed by Betensky (2015),
-#' the stability interval
+#' detailed graphical presentation of the stability interval (Betensky, 2015)
 #'
 #' @param data data.frame containing variables named start_date, final_date and event.
 #'
