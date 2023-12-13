@@ -12,6 +12,9 @@
 #' event = rbinom(100, 1, 0.9))
 #' Figure2(data)
 #'
+#' @details
+#' blabla
+#'
 #' @export
 SI_plot <- function(data){
 
