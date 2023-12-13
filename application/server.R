@@ -369,13 +369,13 @@ server <- function(input, output){
   output$num_var_5_title <- renderText("Pretty tables")
 
 
-  output$num_var_3_title <- renderText("Table 1a: Quantile summaries of KM estimate and proposed SI upper and lower bounds with associated 95% confidence intervals (lower CI, upper CI)")
-  output$num_var_4_title <- renderText("Table 2a: Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI)")
+  output$num_var_1_title <- renderText("Table 1a: Quantile summaries of KM estimate and proposed SI upper and lower bounds with associated 95% confidence intervals (lower CI, upper CI)")
+  output$num_var_2_title <- renderText("Table 2a: Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI)")
 
   output$num_var_6_title <- renderText("Tables for secondary analysis")
 
-  output$num_var_1_title <- renderText("Table 1b: Quantile summaries of KM estimate and proposed SIupper and lower bounds with associated 95% confidence intervals (lower CI, upper CI)")
-  output$num_var_2_title <- renderText("Table 2b: Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI)")
+  output$num_var_3_title <- renderText("Table 1b: Quantile summaries of KM estimate and proposed SI upper and lower bounds with associated 95% confidence intervals (lower CI, upper CI)")
+  output$num_var_4_title <- renderText("Table 2b: Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI)")
 
 
   output$titlefig1 <- renderText("Figure 1: Kaplan–Meier estimate of survivor function for overall survival, with 95% confidence intervals and numbers at risk.")
@@ -383,7 +383,7 @@ server <- function(input, output){
   output$titlefig3 <- renderText("Figure 3: Kaplan–Meier estimates of time to censoring, C, observation time, T, and time to censoring among those who are censored, C|C<X.")
   output$titlefig4 <- renderText("Figure 4: Difference curve between upper and lower limits of Kaplan–Meier and partial difference curves between Kaplan–Meier and upper and lower limits.")
 
-  output$num_var_1_summary_table <- renderTable(results()[[5]],
+  output$num_var_3_summary_table <- renderTable(results()[[5]],
                                                 rownames = TRUE)
   output$save5 <- downloadHandler(
     filename = function() {
@@ -394,7 +394,7 @@ server <- function(input, output){
     }
   )
 
-  output$num_var_2_summary_table <- renderTable(results()[[6]],
+  output$num_var_4_summary_table <- renderTable(results()[[6]],
                                                 rownames = TRUE)
   output$save6 <- downloadHandler(
     filename = function() {
@@ -406,7 +406,7 @@ server <- function(input, output){
   )
 
 
-  output$num_var_3_summary_table <- renderTable(results()[[7]],
+  output$num_var_1_summary_table <- renderTable(results()[[7]],
                                                 rownames = TRUE)
   output$save7 <- downloadHandler(
     filename = function() {
@@ -417,7 +417,7 @@ server <- function(input, output){
     }
   )
 
-  output$num_var_4_summary_table <- renderTable(results()[[8]],
+  output$num_var_2_summary_table <- renderTable(results()[[8]],
                                                 rownames = TRUE)
   output$save8 <- downloadHandler(
     filename = function() {
