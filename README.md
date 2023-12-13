@@ -27,7 +27,7 @@ data <- data.frame(start_date = as.Date(rep(0, 100), origin = "2022-01-01"),
 KM_plot(data) # Kaplan–Meier estimate of survivor function for overall survival, with 95% confidence intervals and numbers at risk.
 SI_plot(data) # Stability interval: upper and lower limits for Kaplan–Meier estimate as proposed by Betensky (2015).
 FU_plot(data) # Kaplan–Meier estimates of time to censoring, C, observation time, T, and time to censoring among those who are censored, C|C<X.
-DC_plot(data) # Difference curve between upper and lower limits of Kaplan–Meier and partial difference curves between Kaplan–Meier and SI upper and lower limits.
+DC_plot(data) # Difference curve between stability interval upper and lower limits and partial difference curves between Kaplan–Meier and SI upper and lower limits.
 KM_SI_tab(data)  # Quantile summaries of KM estimate and proposed upper and lower bounds of the stability interval with associated 95% confidence intervals (lower CI, upper CI).
 FU_tab(data, pretty = FALSE)  # Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI).
 ````
