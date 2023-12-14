@@ -65,7 +65,7 @@ server <- function(input, output){
 
       plot3 <- FU_plot_group(data)
 
-      plot4 <- plot(1,1) #DC_plot_group(data)
+      plot4 <- DC_plot_group(data)
 
       frame <- KM_SI_tab_group(data)
       frame_pretty <- KM_SI_tab_group(data)

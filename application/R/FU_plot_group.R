@@ -60,6 +60,7 @@ FU_plot_group <- function(data){
                                   "black", "grey",
                                   "darkred", "red"), risk.table.height= 0.4)
 
+
   return(FU_plot_group)
 
 }
