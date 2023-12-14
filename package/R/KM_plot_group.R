@@ -33,7 +33,7 @@ KM_plot_group <- function(data){
                       risk.table = TRUE,
                       conf.int = TRUE,
                       censor = TRUE,
-                      title = "", risk.table.height= 0.4)
+                      title = "")
 
   return(KM_plot_group)
 

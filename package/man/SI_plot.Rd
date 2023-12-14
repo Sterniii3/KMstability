@@ -44,7 +44,7 @@ possible and the context should determine what is used.
 data <- data.frame(start_date = as.Date(rep(0, 100), origin = "2022-01-01"),
 final_date = as.Date(round(runif(100, 0, 250)), origin = "2022-01-01"),
 event = rbinom(100, 1, 0.9))
-Figure2(data)
+SI_plot(data)
 
 }
 \references{

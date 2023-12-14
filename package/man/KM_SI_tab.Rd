@@ -8,6 +8,8 @@ KM_SI_tab(data, pretty = TRUE)
 }
 \arguments{
 \item{data}{data.frame containing variables named start_date, final_date and event.}
+
+\item{pretty}{logical variable, if FALSE the output table is such that the values can easier be assessed for secondary analysis}
 }
 \value{
 data.frame object
