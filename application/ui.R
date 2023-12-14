@@ -33,7 +33,22 @@ ui <- navbarPage(
 
 
         selectInput("fact_var", "event", choices = c("event")),
-        radioButtons("Download Option", "4. choose the format", list("png","jpeg","pdf")),
+
+        selectInput(
+          inputId = "option1",
+          label = "4. choose number of groups",
+          choices = c("1",
+                      "2",
+                      ""),
+          selected = ""),
+
+        conditionalPanel(
+          condition = "input.option1 == 2",
+
+          selectInput("fact_var1", "group", choices = c("group")),
+        ),
+
+        radioButtons("Download Option", "5. choose the format", list("png","jpeg","pdf")),
         br(),
         actionButton("run_button", "Go"),
         h6(strong('Details on the implemented calculation algorithms can be found in Erdmann (2022), while an interpretation help for the results can be found in Betensky (2015)'))
