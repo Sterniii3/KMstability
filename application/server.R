@@ -67,10 +67,10 @@ server <- function(input, output){
 
       plot4 <- DC_plot_group(data)
 
-      frame <- KM_SI_tab_group(data)
+      frame <- KM_SI_tab_group(data, pretty = FALSE)
       frame_pretty <- KM_SI_tab_group(data)
 
-      frame1 <- FU_tab_group(data)
+      frame1 <- FU_tab_group(data, pretty = FALSE)
       frame1_pretty <- FU_tab_group(data)
 
       list(plot1, plot2, plot3, plot4, frame, frame1, frame_pretty, frame1_pretty)
