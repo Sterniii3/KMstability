@@ -115,6 +115,8 @@ DC_plot_group <- function(data){
                                               "1: SI upper limit minus SI lower limit",
                                               "1: SI upper limit minus KM estmate",
                                               "1: KM estimate minus SI lower limit"))
+  DF4$group <- factor(DF4$group)
+
 
   plot4 <- ggplot2::ggplot(data = DF4,
                   ggplot2::aes(x = time,
