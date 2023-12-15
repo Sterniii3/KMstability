@@ -45,7 +45,8 @@ data <- data.frame(start_date = c(as.Date(rep(0, 200), origin = "2022-01-01"),
                   
 KM_plot_group(data) 
 SI_plot_group(data) 
-FU_plot_group(data) 
+FU_plot_group(data)
+DC_plot_group(data)
 KM_SI_tab_group(data)  
 FU_tab_group(data)  
 ````
