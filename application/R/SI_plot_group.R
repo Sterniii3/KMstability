@@ -67,7 +67,7 @@ SI_plot_group <- function(data){
                             title = "",
                             legend = "none",
                             palette = c("lightblue3", "blue", "lightblue2",
-                                        "pink3", "red", "pink2"), risk.table.height= 0.4)
+                                        "pink3", "red", "pink2"), risk.table.height= 0.45)
 
   return(SI_plot_group)
 }

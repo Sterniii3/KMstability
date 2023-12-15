@@ -7,9 +7,12 @@
 #' @return ggsurvplot object
 #'
 #' @examples
-#' data <- data.frame(start_date = as.Date(rep(0, 100), origin = "2022-01-01"),
-#' final_date = as.Date(round(runif(100, 0, 250)), origin = "2022-01-01"),
-#' event = rbinom(100, 1, 0.9))
+#' data <- data.frame(start_date = c(as.Date(rep(0, 200), origin = "2022-01-01"),
+#' as.Date(rep(0, 200), origin = "2022-01-01")),
+#' final_date = c(as.Date(round(runif(200, 0, 250)), origin = "2022-01-01"),
+#'                as.Date(round(runif(200, 0, 450)), origin = "2022-01-01")),
+#' event = c(rbinom(200, 1, 0.9), rbinom(200, 1, 0.9)),
+#' group = c(rep(0, 200), rep(1, 200)))
 #' DC_plot_group(data)
 #'
 #' @export

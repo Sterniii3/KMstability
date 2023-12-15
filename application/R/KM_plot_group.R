@@ -35,7 +35,6 @@ KM_plot_group <- function(data){
                       censor = TRUE,
                       title = "")
 
-
   return(KM_plot_group)
 
 }
