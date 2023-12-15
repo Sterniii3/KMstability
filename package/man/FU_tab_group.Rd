@@ -4,7 +4,7 @@
 \alias{FU_tab_group}
 \title{FU_tab_group}
 \usage{
-FU_tab_group(data)
+FU_tab_group(data, pretty = TRUE)
 }
 \arguments{
 \item{data}{data.frame containing variables named start_date, final_date, event and group..}

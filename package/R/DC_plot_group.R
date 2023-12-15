@@ -33,16 +33,9 @@ DC_plot_group <- function(data){
   DF_norm0 <- subset(DF_norm, group == 0)
   DF_norm1 <- subset(DF_norm, group == 1)
 
-
   # maximum event time
-  # maximum event time
-  data0 <- subset(data, group == 0)
-  data1 <- subset(data, group == 1)
-
-  maximum_event_time0 <- ceiling(max(difftime(data0$final_date,
-                                              data0$start_date)))
-  maximum_event_time1 <- ceiling(max(difftime(data1$final_date,
-                                              data1$start_date)))
+  maximum_event_time0 <- ceiling(max(DF_norm0$time))
+  maximum_event_time1 <- ceiling(max(DF_norm1$time))
 
   DF_norm0 <- subset(DF_norm0, time <= maximum_event_time0)
   keep0    <- as.numeric(names(which(table(DF_norm0$time) == 3)))

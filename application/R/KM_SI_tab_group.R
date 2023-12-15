@@ -50,7 +50,7 @@
 #' Why provide them and what should they be?. Clinical Trials, 12(4), 403-408.
 #'
 #' @export
-KM_SI_tab_group <- function(data){
+KM_SI_tab_group <- function(data, pretty = TRUE){
 
   DF <- calculate_stability_group(data)
 
@@ -73,6 +73,40 @@ KM_SI_tab_group <- function(data){
                       "upper CI 0.25quantile",
                       "upper CI median",
                       "upper CI 0.75quantile")
+
+  row.names(KM_SI_tab) <- c("0: SI upper bound",
+                            "0: KM estimate",
+                            "0: SI lower bound",
+                            "1: SI upper bound",
+                            "1: KM estimate",
+                            "1: SI lower bound")
+
+  frame_pretty <- cbind(c("0: SI upper bound",
+                          "0: KM estimate",
+                          "0: SI lower bound",
+                          "1: SI upper bound",
+                          "1: KM estimate",
+                          "1: SI lower bound"),
+                        t(t(paste0(KM_SI_tab$`0.25quantile`, " (",
+                                   KM_SI_tab$`lower CI 0.25quantile`, ",",
+                                   KM_SI_tab$`upper CI 0.25quantile`, ")"))),
+                        t(t(paste0(KM_SI_tab$median, " (",
+                                   KM_SI_tab$`lower CI median`, ",",
+                                   KM_SI_tab$`upper CI median`, ")"))),
+                        t(t(paste0(KM_SI_tab$`0.75quantile`, " (",
+                                   KM_SI_tab$`lower CI 0.75quantile`, ",",
+                                   KM_SI_tab$`upper CI 0.75quantile`, ")"))))
+
+  frame_pretty <- as.data.frame(frame_pretty)
+  names(frame_pretty)<- c("","0.25", "0.5", "0.75")
+
+  if(pretty == TRUE){
+
+    KM_SI_tab <- frame_pretty
+
+  }
+
+
 
   return(KM_SI_tab)
 }

@@ -42,7 +42,7 @@
 #' FU_tab_group(data)
 #'
 #' @export
-FU_tab_group <- function(data){
+FU_tab_group <- function(data, pretty = TRUE){
 
   FU <- calculate_FU_group(data)
 
@@ -63,6 +63,31 @@ FU_tab_group <- function(data){
                       "upper CI 0.25quantile",
                       "upper CI median",
                       "upper CI 0.75quantile")
+
+  row.names(FU_tab) <- c("0: C", "0: C|C<X", "0: T = min(X, C)",
+                         "1: C", "1: C|C<X", "1: T = min(X, C)")
+
+  frame_pretty <- cbind(c("0: C", "0: C|C<X", "0: T = min(X, C)",
+                          "1: C", "1: C|C<X", "1: T = min(X, C)"),
+                        t(t(paste0(FU_tab$`0.25quantile`, " (",
+                                   FU_tab$`lower CI 0.25quantile`, ",",
+                                   FU_tab$`upper CI 0.25quantile`, ")"))),
+                        t(t(paste0(FU_tab$median, " (",
+                                   FU_tab$`lower CI median`, ",",
+                                   FU_tab$`upper CI median`, ")"))),
+                        t(t(paste0(FU_tab$`0.75quantile`, " (",
+                                   FU_tab$`lower CI 0.75quantile`, ",",
+                                   FU_tab$`upper CI 0.75quantile`, ")"))))
+
+  frame_pretty <- as.data.frame(frame_pretty)
+  names(frame_pretty)<- c("","0.25", "0.5", "0.75")
+
+  if(pretty == TRUE){
+
+    FU_tab <- frame_pretty
+
+  }
+
 
   return(FU_tab)
 

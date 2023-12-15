@@ -108,7 +108,7 @@ DC_plot_group <- function(data){
                                               "1: SI upper limit minus SI lower limit",
                                               "1: SI upper limit minus KM estmate",
                                               "1: KM estimate minus SI lower limit"))
-  DF4$group <- as.factor(DF4$group)
+  DF4$group <- factor(DF4$group)
 
 
   plot4 <- ggplot2::ggplot(data = DF4,
@@ -118,19 +118,19 @@ DC_plot_group <- function(data){
     # ggplot2::ggtitle("Difference curve between upper and lower limits of Kaplan–Meier and partial difference curves between Kaplan–Meier and upper and lower limits") +
     ggplot2::geom_line(ggplot2::aes(linetype = strata, color = group)) +
     ggplot2::scale_linetype_manual(name="", values = c("solid",
-                                                       "dashed",
-                                                       "dotted",
-                                                       "solid",
-                                                       "dashed",
-                                                       "dotted"),
-                                   labels=c(paste0("0: SI upper limit - SI lower limit;\n normalized auc0 = ",
-                                                   round(norm_auc0, 2 )),
-                                            "0: SI upper limit - KM estmate",
-                                            "0: KM estimate - SI lower limit",
-                                            paste0("1: SI upper limit - SI lower limit;\n normalized auc1 = ",
-                                                   round(norm_auc1, 2 )),
-                                            "1: SI upper limit - KM estmate",
-                                            "1: KM estimate - SI lower limit")) +
+                                              "dashed",
+                                              "dotted",
+                                              "solid",
+                                              "dashed",
+                                              "dotted"),
+                          labels=c(paste0("0: SI upper limit - SI lower limit;\n normalized auc0 = ",
+                                          round(norm_auc0, 2 )),
+                                   "0: SI upper limit - KM estmate",
+                                   "0: KM estimate - SI lower limit",
+                          paste0("1: SI upper limit - SI lower limit;\n normalized auc1 = ",
+                                 round(norm_auc1, 2 )),
+                          "1: SI upper limit - KM estmate",
+                          "1: KM estimate - SI lower limit")) +
     ggplot2::scale_color_manual(values = c("blue", "red")) +
     survminer::theme_survminer()
 

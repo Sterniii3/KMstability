@@ -4,7 +4,7 @@
 \alias{KM_SI_tab_group}
 \title{KM_SI_tab_group}
 \usage{
-KM_SI_tab_group(data)
+KM_SI_tab_group(data, pretty = TRUE)
 }
 \arguments{
 \item{data}{data.frame containing variables named start_date, final_date, event and group.}
