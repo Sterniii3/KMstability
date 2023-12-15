@@ -131,6 +131,7 @@ DC_plot_group <- function(data){
                                                    round(norm_auc1, 2 )),
                                             "1: SI upper limit - KM estmate",
                                             "1: KM estimate - SI lower limit")) +
+    ggplot2::scale_color_manual(values = c("blue", "red")) +
     survminer::theme_survminer()
 
   return(plot4)

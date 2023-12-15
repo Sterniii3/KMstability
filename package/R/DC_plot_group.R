@@ -73,18 +73,18 @@ DC_plot_group <- function(data){
   # partial difference curves to indicate directional instability:
   # the difference between the upper limit and the Kaplan–Meier estimate and
   diff_upper_KM0 <- subset(DF_norm0, strata == "measure=SI upper bound, group=0")$surv -
-    subset(DF_norm0, strata == "KM estimate")$surv
+    subset(DF_norm0, strata == "measure=KM estimate, group=0")$surv
 
   # the difference between the Kaplan–Meier estimate and the lower limit.
-  diff_KM_lower0 <- subset(DF_norm0, strata == "KM estimate")$surv -
+  diff_KM_lower0 <- subset(DF_norm0, strata == "measure=KM estimate, group=0")$surv -
     subset(DF_norm0, strata == "measure=SI lower bound, group=0")$surv
 
-  diff_upper_KM1 <- subset(DF_norm1, strata == "measure=SI upper bound, group=0")$surv -
-    subset(DF_norm1, strata == "KM estimate")$surv
+  diff_upper_KM1 <- subset(DF_norm1, strata == "measure=SI upper bound, group=1")$surv -
+    subset(DF_norm1, strata == "measure=KM estimate, group=1")$surv
 
   # the difference between the Kaplan–Meier estimate and the lower limit.
-  diff_KM_lower1 <- subset(DF_norm1, strata == "KM estimate")$surv -
-    subset(DF_norm1, strata == "measure=SI lower bound, group=0")$surv
+  diff_KM_lower1 <- subset(DF_norm1, strata == "measure=KM estimate, group=1")$surv -
+    subset(DF_norm1, strata == "measure=SI lower bound, group=1")$surv
 
   # Figure 4. Difference curve between upper and lower limits of Kaplan–Meier
   # and partial difference curves between Kaplan–Meier and upper and lower limits
@@ -136,6 +136,7 @@ DC_plot_group <- function(data){
                                  round(norm_auc1, 2 )),
                           "1: SI upper limit - KM estmate",
                           "1: KM estimate - SI lower limit")) +
+    ggplot2::scale_color_manual(values = c("blue", "red")) +
     survminer::theme_survminer()
 
   return(plot4)

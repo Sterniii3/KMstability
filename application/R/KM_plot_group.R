@@ -33,7 +33,8 @@ KM_plot_group <- function(data){
                       risk.table = TRUE,
                       conf.int = TRUE,
                       censor = TRUE,
-                      title = "")
+                      title = "",
+                      palette = c("blue", "red"))
 
   return(KM_plot_group)
 
