@@ -64,7 +64,10 @@ SI_plot <- function(data){
                       censor = TRUE,
                       title = "",
                       legend = "none",
-                      palette = c("gray50", "red", "gray51"))
+                      palette = c("gray50", "red", "gray51"),
+                      legend.labs = c("SIU",
+                                      "KM",
+                                      "SIL"))
 
   return(plot2)
 }
