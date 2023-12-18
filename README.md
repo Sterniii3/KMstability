@@ -29,7 +29,7 @@ SI_plot(data) # Stability interval: upper and lower limits for Kaplan–Meier es
 FU_plot(data) # Kaplan–Meier estimates of time to censoring, C, observation time, T, and time to censoring among those who are censored, C|C<X.
 DC_plot(data) # Difference curve between stability interval upper and lower limits and partial difference curves between Kaplan–Meier and SI upper and lower limits.
 KM_SI_tab(data)  # Quantile summaries of KM estimate and proposed upper and lower bounds of the stability interval with associated 95% confidence intervals (lower CI, upper CI).
-FU_tab(data, pretty = FALSE)  # Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI).
+FU_tab(data)  # Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI).
 ````
 
 In a two group comparison it may also be useful to calculate the stability interval for the individual Kaplan Meier estimates, which can be done as follows:
@@ -40,7 +40,7 @@ data <- data.frame(start_date = c(as.Date(rep(0, 200), origin = "2022-01-01"),
                                   as.Date(rep(0, 200), origin = "2022-01-01")),
                    final_date = c(as.Date(round(runif(200, 0, 250)), origin = "2022-01-01"),
                                   as.Date(round(runif(200, 0, 450)), origin = "2022-01-01")),
-                   event = c(rbinom(200, 1, 0.9), rbinom(200, 1, 0.9)),
+                   event = c(rbinom(200, 1, 0.9), rbinom(200, 1, 0.7)),
                    group = c(rep(0, 200), rep(1, 200)))
                   
 KM_plot_group(data) 

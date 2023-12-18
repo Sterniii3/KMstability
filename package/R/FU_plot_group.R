@@ -64,7 +64,9 @@ FU_plot_group <- function(data){
                                "0: C|C<X",
                                "1: C|C<X",
                                "0: T",
-                               "1: T"))
+                               "1: T"
+                               "0: T=min(X,C)",
+                               "1: T=min(X,C)"))
 
   return(FU_plot_group)
 
