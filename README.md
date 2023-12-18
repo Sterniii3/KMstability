@@ -40,7 +40,7 @@ data <- data.frame(start_date = c(as.Date(rep(0, 200), origin = "2022-01-01"),
                                   as.Date(rep(0, 200), origin = "2022-01-01")),
                    final_date = c(as.Date(round(runif(200, 0, 250)), origin = "2022-01-01"),
                                   as.Date(round(runif(200, 0, 450)), origin = "2022-01-01")),
-                   event = c(rbinom(200, 1, 0.9), rbinom(200, 1, 0.9)),
+                   event = c(rbinom(200, 1, 0.9), rbinom(200, 1, 0.7)),
                    group = c(rep(0, 200), rep(1, 200)))
                   
 KM_plot_group(data) 
