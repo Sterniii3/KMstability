@@ -7,11 +7,11 @@
   <li>an <b>event variable</b>, indicating if an event (e.g. death; coded as 1) or censoring (coded as 0) took place </li>
   <li>in case of group comparison: an <b>group variable</b>, indicating the goup belonging 0 or 1 </li>
 </ul>
-by browsing your directory.
+Upload this .csv file to the R shiny application by browsing your directory.
 
-2. Select if you use option 1 or option 2.
+2. Indicate whether you are using option 1 (start and stop date variable) or option 2 (time interval variable), compare step 1.
 
-3. Specify the name of the start and the stop date variable or the time interval variable, as well as the event variable (and group variable if appropriate) in your data set, respectively. 
+3. Specify the name of the start and the stop date variable or the time interval variable, as well as the event variable in your data set, respectively. 
 
 4. Choose the number of groups in your data: 1 or 2. If 2, choose the name of the group variable in your data set.
 
