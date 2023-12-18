@@ -29,7 +29,7 @@ SI_plot(data) # Stability interval: upper and lower limits for Kaplan–Meier es
 FU_plot(data) # Kaplan–Meier estimates of time to censoring, C, observation time, T, and time to censoring among those who are censored, C|C<X.
 DC_plot(data) # Difference curve between stability interval upper and lower limits and partial difference curves between Kaplan–Meier and SI upper and lower limits.
 KM_SI_tab(data)  # Quantile summaries of KM estimate and proposed upper and lower bounds of the stability interval with associated 95% confidence intervals (lower CI, upper CI).
-FU_tab(data, pretty = FALSE)  # Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI).
+FU_tab(data)  # Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI).
 ````
 
 In a two group comparison it may also be useful to calculate the stability interval for the individual Kaplan Meier estimates, which can be done as follows:
