@@ -58,7 +58,13 @@ FU_plot_group <- function(data){
                       censor = TRUE,
                       palette = c("darkblue", "blue",
                                   "black", "grey",
-                                  "darkred", "red"), risk.table.height= 0.45)
+                                  "darkred", "red"), risk.table.height= 0.45,
+                      legend.labs = c("0: C",
+                               "1: C",
+                               "0: C|C<X",
+                               "1: C|C<X",
+                               "0: T",
+                               "1: T"))
 
   return(FU_plot_group)
 

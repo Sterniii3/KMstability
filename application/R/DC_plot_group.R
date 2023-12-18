@@ -123,15 +123,16 @@ DC_plot_group <- function(data){
                                               "solid",
                                               "dashed",
                                               "dotted"),
-                          labels=c(paste0("0: SI upper limit - SI lower limit;\n normalized auc0 = ",
+                          labels=c(paste0("0: SIU - SIL; auc0 = ",
                                           round(norm_auc0, 2 )),
-                                   "0: SI upper limit - KM estmate",
-                                   "0: KM estimate - SI lower limit",
-                          paste0("1: SI upper limit - SI lower limit;\n normalized auc1 = ",
+                                   "0: SIU - KM",
+                                   "0: KM - SIL",
+                          paste0("1: SIU - SIL; auc1 = ",
                                  round(norm_auc1, 2 )),
-                          "1: SI upper limit - KM estmate",
-                          "1: KM estimate - SI lower limit")) +
-    ggplot2::scale_color_manual(values = c("blue", "red")) +
+                          "1: SIU - KM",
+                          "1: KM - SIL")) +
+    ggplot2::scale_color_manual(values = c("blue", "red"))  +
+    ggplot2::guides(color = ggplot2::guide_legend(nrow = 2), linetype = ggplot2::guide_legend(nrow = 3)) +
     survminer::theme_survminer()
 
   return(plot4)

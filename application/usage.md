@@ -26,7 +26,7 @@ In the "plots" tab, the following figures are shown and can be downloaded by cli
 	<li> Figure 1: Kaplan-Meier estimate of survivor function for overall survival, with 95% confidence intervals and numbers at risk.</li>
 	<li> Figure 2: Upper and lower limits of the stability interval as proposed by Betensky (2015).</li>
 	<li> Figure 3: Kaplan-Meier estimates of time to censoring, C, observation time, T, and time to censoring among those who are censored, C|C < X.</li>
-	<li> Figure 4: Difference curve between upper and lower limits of the stability interval and partial difference curves between KM estimate and SI upper and SI lower limits, respectively.</li>
+	<li> Figure 4: Figure 4: Difference curve between upper and lower limits of the stability interval (SIU, SIL) and partial difference curves between Kaplan–Meier estimate and SIU and SIL, respectively.</li>
 </ul>
 
 In the "derived metrics" tab, the following tables are shown and can be downloaded by clicking on "save Table"

@@ -74,10 +74,10 @@ DC_plot <- function(data){
     ggplot2::scale_linetype_manual(name="", values = c("solid",
                                               "dashed",
                                               "dotted"),
-                          labels=c(paste0("SI upper limit - SI lower limit;\n normalized auc = ",
+                          labels=c(paste0("SIU - SIL;\n normalized auc = ",
                                           round(norm_auc, 2 )),
-                                   "SI upper limit - KM estmate",
-                                   "KM estimate - SI lower limit")) +
+                                   "SIU - KM",
+                                   "KM - SIL")) +
     survminer::theme_survminer()
 
   return(plot4)
