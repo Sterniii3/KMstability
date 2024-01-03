@@ -60,11 +60,15 @@ ui <- navbarPage(
             plotOutput("plot_1"),
             fluidRow(strong(textOutput("titlefig1"))
             ),
+            fluidRow(textOutput("titlefig1a")
+            ),
             downloadButton("save1", "save Figure 1"),
             br(),
             br(),
             plotOutput("plot_2"),
             fluidRow(strong(textOutput("titlefig2"))
+            ),
+            fluidRow(textOutput("titlefig2a")
             ),
             downloadButton("save2", "save Figure 2"),
             br(),
@@ -72,11 +76,15 @@ ui <- navbarPage(
             plotOutput("plot_3"),
             fluidRow(strong(textOutput("titlefig3"))
             ),
+            fluidRow(textOutput("titlefig3a")
+            ),
             downloadButton("save3", "save Figure 3"),
             br(),
             br(),
             plotOutput("plot_4"),
             fluidRow(strong(textOutput("titlefig4"))
+            ),
+            fluidRow(textOutput("titlefig4a")
             ),
             downloadButton("save4", "save Figure 4")
           ),

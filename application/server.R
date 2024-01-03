@@ -190,20 +190,27 @@ server <- function(input, output){
   output$num_var_5_title <- renderText("Pretty tables")
 
 
-  output$num_var_1_title <- renderText("Table 1a: Quantile summaries of KM estimate and proposed SI upper and lower bounds with associated 95% confidence intervals (lower CI, upper CI)")
+  output$num_var_1_title <- renderText("Table 1a: Quantile summaries of Kaplan-Meier estimate (KM) and proposed stability interval (SI) upper and lower bounds with associated 95% confidence intervals (lower CI, upper CI)")
   output$num_var_2_title <- renderText("Table 2a: Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI)")
 
   output$num_var_6_title <- renderText("Tables for secondary analysis")
 
-  output$num_var_3_title <- renderText("Table 1b: Quantile summaries of KM estimate and proposed SI upper and lower bounds with associated 95% confidence intervals (lower CI, upper CI)")
+  output$num_var_3_title <- renderText("Table 1a: Quantile summaries of Kaplan-Meier estimate (KM) and proposed stability interval (SI) upper and lower bounds with associated 95% confidence intervals (lower CI, upper CI)")
   output$num_var_4_title <- renderText("Table 2b: Quantile summaries of C, C|C<X and T=min(X, c) with associated 95% confidence intervals (lower CI, upper CI)")
 
 
-  output$titlefig1 <- renderText("Figure 1: Kaplan–Meier estimate of survivor function for overall survival, with 95% confidence intervals and numbers at risk.")
-  output$titlefig2 <- renderText("Figure 2: Upper and lower limits of the stability interval (SIU, SIL) for the Kaplan–Meier estimate (KM) as proposed by Betensky (2015).")
-  output$titlefig3 <- renderText("Figure 3: Kaplan–Meier estimates of time to censoring, C, observation time, T, and time to censoring among those who are censored, C|C<X.")
-  output$titlefig4 <- renderText("Figure 4: Difference curve between upper and lower limits of the stability interval (SIU, SIL) and partial difference curves between Kaplan–Meier estimate (KM) and SIU and SIL, respectively.")
 
+  
+  output$titlefig1 <- renderText("Figure 1: Kaplan–Meier estimate with 95% confidence interval and numbers at risk.")
+  output$titlefig1a <- renderText("By plotting the confidence interval around the Kapaln-Meier estimate, its precision is visualized. The random 95% confidence interval covers the true parameter in the population with a probability of 95%. Heuristically, this means that if the study is repeated infinitely often (and all assumptions used to compute the confidence intervals were correct), 95% of the confidence intervals would contain the true parameter.")
+  output$titlefig2 <- renderText("Figure 2: Upper and lower limits of the stability interval (SIU, SIL) for the Kaplan–Meier estimate (KM) as proposed by Betensky (2015).")
+  output$titlefig2a <- renderText("This visualizes the stability of the Kaplan-Meier estimate: the stability interval upper and lower limits are deterministic in the sense that they present a best case (all patients with censoring observations in the study actually survive) and a realistic worst case scenario (all patients actually imminently die after they were censored, whereby unrealistic early events do not occur). Thus, in case all patients were fully observed (no censoring occurs) the associated Kaplan-Meier plot must lay within the stability interval.")
+   output$titlefig3a <- renderText("Among the traditional approaches for describing the stability of the Kaplan-Meier estimate, Betensky regarded C | C < X as most directly informative about the stability of the Kaplan-Meier estimate, although it is unstable if there are few event-free observations at the time of analysis. Therefore, the usage of the stability interval is recommended.")
+   output$titlefig3 <- renderText("Figure 3: Kaplan–Meier estimates of time to censoring, C, observation time, T, and time to censoring among those who are censored, C|C<X.")
+   
+   output$titlefig4 <- renderText("Figure 4: Difference curve between upper and lower limits of the stability interval (SIU, SIL) and partial difference curves between Kaplan–Meier estimate (KM) and SIU and SIL, respectively.")
+  output$titlefig4a <- renderText("The difference curve shows basically the width of the stability interval as a function of time, while the partial difference curves show the distance of the Kaplan-Meier estimate from the stability interval lower and upper limits, respectively. Therefore, the difference curve indicates the stability of the Kaplan-Meier estimate in terms of the stability interval width as a function of time. The partial difference curves indicate the potential direction of the movement of the Kaplan-Meier estimate for X as a function of time. The normalized area under the difference curve is another measure for stability, where 0 would indicate perfect stability.")
+  
   output$num_var_3_summary_table <- renderTable(results()[[5]],
                                                 rownames = TRUE)
   output$save5 <- downloadHandler(

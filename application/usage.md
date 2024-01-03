@@ -2,10 +2,10 @@
 
 1. Choose the .csv data set including individual observations of
 <ul>
-  <li>option 1: a <b>start and stop date variable</b>, indicating the start date of the observation period and the date of the last observation, <b>or</b></li>
-  <li>option 2: a <b>time interval variable</b>, indicating the time interval of the observation period <b>and</b></li>
+  <li>option 1: a <b>start and stop date variable</b>, indicating the start date of the observation period and the date of the last observation, <b>or</b> <br>
+  option 2: a <b>time interval variable</b>, indicating the time interval of the observation period <b>and</b></li>
   <li>an <b>event variable</b>, indicating if an event (e.g. death; coded as 1) or censoring (coded as 0) took place </li>
-  <li>in case of group comparison: an <b>group variable</b>, indicating the goup belonging 0 or 1 </li>
+  <li>in case of group comparison: a <b>group variable</b>, indicating the group belonging to 0 or 1 </li>
 </ul>
 Upload this .csv file to the R shiny application by browsing your directory.
 
@@ -23,10 +23,10 @@ Upload this .csv file to the R shiny application by browsing your directory.
 
 In the "plots" tab, the following figures are shown and can be downloaded by clicking on "save Figure"
 <ul>
-	<li> Figure 1: Kaplan-Meier estimate of survivor function for overall survival, with 95% confidence intervals and numbers at risk.</li>
+	<li> Figure 1: Kaplan-Meier estimate with 95% confidence intervals and numbers at risk.</li>
 	<li> Figure 2: Upper and lower limits of the stability interval (SIU, SIL) for the Kaplan–Meier estimate (KM) as proposed by Betensky (2015).</li>
 	<li> Figure 3: Kaplan-Meier estimates of time to censoring, C, observation time, T, and time to censoring among those who are censored, C|C < X.</li>
-	<li> Figure 4: Figure 4: Difference curve between upper and lower limits of the stability interval (SIU, SIL) and partial difference curves between Kaplan–Meier estimate and SIU and SIL, respectively.</li>
+	<li> Figure 4: Difference curve between upper and lower limits of the stability interval (SIU, SIL) and partial difference curves between Kaplan–Meier estimate (KM) and SIU and SIL, respectively.</li>
 </ul>
 
 In the "derived metrics" tab, the following tables are shown and can be downloaded by clicking on "save Table"

@@ -12,6 +12,6 @@ Further reading:
 <ol>
 <li> Introduction of the stability interval: Betensky, R. A. (2015). Measures of follow-up in time-to-event studies: Why provide them and what should they be?. Clinical Trials, 12(4), 403-408.  </li>
 
-<li> Details on calculation of the methods used, implemention and use of the application and the associated package: Erdmann, S. & Betensky, R. A. (2023). KMstability: R tools to report the stability and precision of Kaplan-Meier estimates as well as measures of follow-up in time-to-event studies. SoftwareX (in revision).  </li>
+<li> Details on calculation of the methods used, implementation and use of the application and the associated package: Erdmann, S. & Betensky, R. A. (2023). KMstability: R tools to report the stability and precision of Kaplan-Meier estimates as well as measures of follow-up in time-to-event studies. SoftwareX (in revision).  </li>
 
 </ol>	
