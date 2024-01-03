@@ -51,7 +51,7 @@ KM_SI_tab_group(data)
 FU_tab_group(data)  
 ````
 
-Reference:
+References:
 
 Betensky, R. A. (2015). Measures of follow-up in time-to-event studies: Why provide them and what should they be?. Clinical Trials, 12(4), 403-408.
 
