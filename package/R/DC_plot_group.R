@@ -18,6 +18,8 @@
 #' @export
 DC_plot_group <- function(data){
 
+  data <- na.omit(data)
+  
   DF <- calculate_stability_group(data)
 
   KM <- survival::survfit(survival::Surv(time, event) ~ measure + group,
