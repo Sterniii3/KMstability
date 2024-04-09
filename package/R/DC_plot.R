@@ -15,6 +15,8 @@
 #' @export
 DC_plot <- function(data){
 
+  data <- na.omit(data)
+  
   DF <- calculate_stability(data)
 
   KM <- survival::survfit(survival::Surv(time, event) ~ strata,
