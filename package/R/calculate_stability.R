@@ -49,6 +49,8 @@ calculate_stability <- function(data){
   # stability interval = lower and upper limit for KM (Betensky, 2015)           #
   ################################################################################
 
+  data <- na.omit(data)
+
   # calculation of upper limit
   # by "setting all censored observations to a value larger than the maximum event
   # time (and retaining their status as censored)"

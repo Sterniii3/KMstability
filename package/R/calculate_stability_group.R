@@ -54,6 +54,8 @@ calculate_stability_group <- function(data){
   # stability interval = lower and upper limit for KM (Betensky, 2015)           #
   ################################################################################
 
+  data <- na.omit(data)
+
   data$time <- difftime(data$final_date,
                          data$start_date)
 
