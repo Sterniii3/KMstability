@@ -52,7 +52,7 @@ calculate_stability <- function(data, time_interval = FALSE){
   data <- na.omit(data)
 
   if(time_interval == FALSE){
-    difftime <- difftime(data$final_date, data$start_date)
+    data$difftime <- difftime(data$final_date, data$start_date)
     }
   
   # calculation of upper limit
@@ -60,16 +60,16 @@ calculate_stability <- function(data, time_interval = FALSE){
   # time (and retaining their status as censored)"
   #-------------------------------------------------------------------------------
   # maximum observation time
-  maximum_event_time <- ceiling(max(difftime))
+  maximum_event_time <- ceiling(max(data$difftime))
   # set all times of censored observations to the maximum event time
-  data$timeupper <- difftime
+  data$timeupper <- data$difftime
   data$timeupper[data$event == 0] <- maximum_event_time
 
   # calculation of lower limit
   # by "coding all censored observations as events at the observed event times
   # immediately following their censoring times"
   #-------------------------------------------------------------------------------
-  data$time <- difftime
+  data$time <- data$difftime
   dfC <- subset(data, event == 0)
   dfE <- subset(data, event == 1)
 
