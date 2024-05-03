@@ -31,7 +31,7 @@ DC_plot <- function(data, time_interval = FALSE){
   # to range between 0 (complete stability) and 1 (complete instability)
   DF_norm <- survminer::surv_summary(KM, data = DF)
   # maximum observation time
-  if(time_interval = FALSE){
+  if(time_interval == FALSE){
      maximum_event_time <- ceiling(max(difftime(data$final_date,
                                              data$start_date))) 
   }else{
