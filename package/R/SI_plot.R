@@ -46,9 +46,9 @@
 #' Why provide them and what should they be?. Clinical Trials, 12(4), 403-408.
 #'
 #' @export
-SI_plot <- function(data){
+SI_plot <- function(data, time_interval = FALSE){
 
-  DF <- calculate_stability(data)
+  DF <- calculate_stability(data, time_interval)
 
   KM <- survival::survfit(survival::Surv(time, event) ~ strata,
                 type = "kaplan-meier",
