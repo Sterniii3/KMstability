@@ -36,15 +36,19 @@
 #' calculate_FU(data)
 #'
 #' @export
-calculate_FU <- function(data){
+calculate_FU <- function(data, time_interval = FALSE){
 
   ################################################################################
   # measures of follow-up as a measure of the stability of the KM estimator      #
   ################################################################################
 
-  data$time <- difftime(data$final_date,
-                        data$start_date)
-
+  if(time_interval == FALSE){
+    data$time <- difftime(data$final_date,
+                        data$start_date)  
+  }else{
+  data$time <- data$difftime
+  }
+  
   dfC <- subset(data, event == 0)
 
   FU = data.frame(strata = c(rep("C", dim(data)[1]), # time to censoring
