@@ -39,9 +39,9 @@
 #' Why provide them and what should they be?. Clinical Trials, 12(4), 403-408.
 #'
 #' @export
-FU_plot <- function(data){
+FU_plot <- function(data, time_interval = FALSE){
 
-  FU <- calculate_FU(data)
+  FU <- calculate_FU(data, time_interval)
 
   KM_FU <- survival::survfit(survival::Surv(time, event) ~ strata,
                    type = "kaplan-meier",
