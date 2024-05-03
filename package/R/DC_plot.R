@@ -13,24 +13,30 @@
 #' DC_plot(data)
 #'
 #' @export
-DC_plot <- function(data){
+DC_plot <- function(data, time_interval = FALSE){
 
   data <- na.omit(data)
   
-  DF <- calculate_stability(data)
+  DF <- calculate_stability(data, time_interval)
 
   KM <- survival::survfit(survival::Surv(time, event) ~ strata,
                 type = "kaplan-meier",
                 conf.type = "log-log",
                 data = DF)
 
+
+  
   # difference curve between the upper and lower limits and
   # the area under this curve, normalized by the maximum event time,
   # to range between 0 (complete stability) and 1 (complete instability)
   DF_norm <- survminer::surv_summary(KM, data = DF)
   # maximum observation time
-  maximum_event_time <- ceiling(max(difftime(data$final_date,
-                                             data$start_date)))
+  if(time_interval = FALSE){
+     maximum_event_time <- ceiling(max(difftime(data$final_date,
+                                             data$start_date))) 
+  }else{
+      maximum_event_time <- ceiling(max(data$difftime))
+  }
   DF_norm <- subset(DF_norm, time <= maximum_event_time)
   keep    <- as.numeric(names(which(table(DF_norm$time) == 3)))
   DF_norm <- subset(DF_norm, time %in% keep) # keep only observations where differences can be calculated
