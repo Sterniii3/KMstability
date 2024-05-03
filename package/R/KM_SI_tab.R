@@ -47,11 +47,11 @@
 #' Why provide them and what should they be?. Clinical Trials, 12(4), 403-408.
 #'
 #' @export
-KM_SI_tab <- function(data, pretty = TRUE, scale = 1){
+KM_SI_tab <- function(data, pretty = TRUE){
 
   DF <- calculate_stability(data)
 
-  KM <- survival::survfit(survival::Surv(time/scale, event) ~ strata,
+  KM <- survival::survfit(survival::Surv(time, event) ~ strata,
                 type = "kaplan-meier",
                 conf.type = "log-log",
                 data = DF)
