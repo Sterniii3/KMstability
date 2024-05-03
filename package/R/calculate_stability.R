@@ -44,31 +44,32 @@
 #' Why provide them and what should they be?. Clinical Trials, 12(4), 403-408.
 #'
 #' @export
-calculate_stability <- function(data){
+calculate_stability <- function(data, time_interval = FALSE){
   ################################################################################
   # stability interval = lower and upper limit for KM (Betensky, 2015)           #
   ################################################################################
 
   data <- na.omit(data)
 
+  if(time_interval == FALSE){
+    difftime <- difftime(data$final_date, data$start_date)
+    }
+  
   # calculation of upper limit
   # by "setting all censored observations to a value larger than the maximum event
   # time (and retaining their status as censored)"
   #-------------------------------------------------------------------------------
   # maximum observation time
-  maximum_event_time <- ceiling(max(difftime(data$final_date,
-                                             data$start_date)))
+  maximum_event_time <- ceiling(max(difftime))
   # set all times of censored observations to the maximum event time
-  data$timeupper <- difftime(data$final_date,
-                             data$start_date)
+  data$timeupper <- difftime
   data$timeupper[data$event == 0] <- maximum_event_time
 
   # calculation of lower limit
   # by "coding all censored observations as events at the observed event times
   # immediately following their censoring times"
   #-------------------------------------------------------------------------------
-  data$time <- difftime(data$final_date,
-                        data$start_date)
+  data$time <- difftime
   dfC <- subset(data, event == 0)
   dfE <- subset(data, event == 1)
 
