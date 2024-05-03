@@ -13,15 +13,22 @@
 #' KM_plot(data)
 #'
 #' @export
-KM_plot <- function(data){
+KM_plot <- function(data, time_interval = FALSE){
 
   # Kaplan-Meier estimator of event free time
-  KM <- survival::survfit(survival::Surv(difftime(final_date, start_date),
+  if(time_interval == FALSE){
+   KM <- survival::survfit(survival::Surv(difftime(final_date, start_date),
+                     event) ~ 1,
+                type = "kaplan-meier",
+                conf.type = "log-log",
+                data = data)   
+  }else{
+  KM <- survival::survfit(survival::Surv(difftime,
                      event) ~ 1,
                 type = "kaplan-meier",
                 conf.type = "log-log",
                 data = data)
-
+}
   # KM_plot. Kaplan–Meier estimate of survivor function for overall survival, X,
   # with 95% confidence intervals and numbers at risk
   # (compare Figure 1 in Betensky (2015))
